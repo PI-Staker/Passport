@@ -56,10 +56,13 @@ and `checked` date, so a later pass can see why and re-check if things change.
   `Goegap Nature Reserve (Hester Malan)`. Only when the *reserve itself* was
   renamed: Chelmsford's dam became Ntshingwayo Dam, but Ezemvelo still calls the
   reserve "Chelmsford Nature Reserve", so it stays.
-- **Renaming an existing reserve:** set `"wikidata_name"` to the old name if the
-  map lookup relied on it. Stamps are linked by id, not name, so renames are safe
-  — but the seed matches rows by name, so rename in the database first (see
-  "Applying changes").
+- **Split parks are named `Park – Section`** (en dash with spaces):
+  `uKhahlamba-Drakensberg Park – Cathedral Peak`. The app shows just the section
+  on passport tiles, and search matches the park name too ("drakensberg").
+- **Renaming an existing reserve:** change `name` and add the old name to
+  `"renamed_from": [...]` (keep it — it's harmless). The seed then renames the
+  existing database row in place, so stamps on it stay attached. Also set
+  `"wikidata_name"` to the old name if the map lookup relied on it.
 
 ## Sources — what works
 
@@ -127,6 +130,12 @@ Time budget: ~30–45 minutes with Claude doing the searching.
    added — fills in map locations; hand-set ones are never overwritten).
 2. `node scripts/reserves/build.mjs`
 3. Copy `supabase/seed-reserves.sql` into Supabase → SQL Editor → Run.
+   **Copy it as UTF-8** or names with `–` / `ǀ` arrive garbled (`â€“`) — this
+   happened on 2026-09-27. Either open the file in VS Code and copy from there,
+   or in PowerShell: `Get-Content supabase\seed-reserves.sql -Raw -Encoding UTF8 | Set-Clipboard`
+   (Windows PowerShell 5.1 defaults to the ANSI code page without `-Encoding UTF8`).
+   Re-running the seed repairs garbled names: it inserts the correct ones and
+   deletes the garbled, unstamped ones.
    It adds new reserves, updates existing ones by name, and deletes reserves no
    longer listed **unless someone has stamped them** — those are listed at the
    end of the run for manual handling.

@@ -611,19 +611,21 @@
       "checked": "2026-09-27"
     },
     {
-      "name": "Royal Natal National Park",
+      "name": "uKhahlamba-Drakensberg Park – Royal Natal",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "lat": -28.689,
       "lng": 28.945,
-      "wikidata": "Q1381505"
+      "wikidata": "Q1381505",
+      "wikidata_name": "Royal Natal National Park",
+      "renamed_from": [
+        "Royal Natal National Park"
+      ]
     },
     {
-      "name": "Rugged Glen Nature Reserve",
+      "name": "uKhahlamba-Drakensberg Park – Rugged Glen",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "lat": -28.67278,
       "lng": 28.99111,
       "wikidata": "Q32010570",
@@ -631,73 +633,94 @@
       "sources": [
         "https://en.wikipedia.org/wiki/List_of_Ezemvelo_KZN_Wildlife_Protected_Areas"
       ],
-      "checked": "2026-09-27"
+      "checked": "2026-09-27",
+      "wikidata_name": "Rugged Glen Nature Reserve",
+      "renamed_from": [
+        "Rugged Glen Nature Reserve"
+      ]
     },
     {
-      "name": "Cathedral Peak",
+      "name": "uKhahlamba-Drakensberg Park – Cathedral Peak",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park (Didima)",
       "lat": -28.95028,
       "lng": 29.20139,
-      "wikidata": "Q1050879"
+      "wikidata": "Q1050879",
+      "wikidata_name": "Cathedral Peak",
+      "renamed_from": [
+        "Cathedral Peak"
+      ]
     },
     {
-      "name": "Monk's Cowl",
+      "name": "uKhahlamba-Drakensberg Park – Monk's Cowl",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "lat": -29.07944,
       "lng": 29.34306,
-      "wikidata": "Q31469543"
+      "wikidata": "Q31469543",
+      "wikidata_name": "Monk's Cowl",
+      "renamed_from": [
+        "Monk's Cowl"
+      ]
     },
     {
-      "name": "Injisuthi",
+      "name": "uKhahlamba-Drakensberg Park – Injisuthi",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park"
+      "wikidata_name": "Injisuthi",
+      "renamed_from": [
+        "Injisuthi"
+      ]
     },
     {
-      "name": "Giant's Castle",
+      "name": "uKhahlamba-Drakensberg Park – Giant's Castle",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "lat": -29.34608,
       "lng": 29.48364,
-      "wikidata": "Q3432135"
+      "wikidata": "Q3432135",
+      "wikidata_name": "Giant's Castle",
+      "renamed_from": [
+        "Giant's Castle"
+      ]
     },
     {
-      "name": "Highmoor",
+      "name": "uKhahlamba-Drakensberg Park – Highmoor",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
-      "wikidata_name": "Highmoor Nature Reserve"
+      "wikidata_name": "Highmoor Nature Reserve",
+      "renamed_from": [
+        "Highmoor"
+      ]
     },
     {
-      "name": "Kamberg",
+      "name": "uKhahlamba-Drakensberg Park – Kamberg",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "wikidata_name": "Kamberg Nature Reserve",
       "lat": -29.39278,
       "lng": 29.67389,
-      "wikidata": "Q31929468"
+      "wikidata": "Q31929468",
+      "renamed_from": [
+        "Kamberg"
+      ]
     },
     {
-      "name": "Lotheni",
+      "name": "uKhahlamba-Drakensberg Park – Lotheni",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "wikidata_name": "Lotheni Nature Reserve",
       "lat": -29.45,
       "lng": 29.525,
-      "wikidata": "Q141280474"
+      "wikidata": "Q141280474",
+      "renamed_from": [
+        "Lotheni"
+      ]
     },
     {
-      "name": "Vergelegen",
+      "name": "uKhahlamba-Drakensberg Park – Vergelegen",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "wikidata_name": "Vergelegen Nature Reserve",
       "lat": -29.61667,
       "lng": 29.58333,
@@ -706,25 +729,32 @@
       "sources": [
         "https://en.wikipedia.org/wiki/List_of_Ezemvelo_KZN_Wildlife_Protected_Areas"
       ],
-      "checked": "2026-09-27"
+      "checked": "2026-09-27",
+      "renamed_from": [
+        "Vergelegen"
+      ]
     },
     {
-      "name": "Cobham",
+      "name": "uKhahlamba-Drakensberg Park – Cobham",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
       "wikidata_name": "Cobham Nature Reserve",
       "lat": -29.66667,
       "lng": 29.33333,
       "wikidata": "Q31907955",
-      "coord_note": "location of Cobham State Forest"
+      "coord_note": "location of Cobham State Forest",
+      "renamed_from": [
+        "Cobham"
+      ]
     },
     {
-      "name": "Garden Castle",
+      "name": "uKhahlamba-Drakensberg Park – Garden Castle",
       "org": "Ezemvelo KZN Wildlife",
       "province": "KwaZulu-Natal",
-      "note": "Part of uKhahlamba-Drakensberg Park",
-      "wikidata_name": "Garden Castle Nature Reserve"
+      "wikidata_name": "Garden Castle Nature Reserve",
+      "renamed_from": [
+        "Garden Castle"
+      ]
     },
     {
       "name": "Oribi Gorge Nature Reserve",
@@ -1331,7 +1361,10 @@
         "https://ho.org.za/parks/"
       ],
       "checked": "2026-09-27",
-      "wikidata_name": "Kgaswane Mountain Reserve"
+      "wikidata_name": "Kgaswane Mountain Reserve",
+      "renamed_from": [
+        "Kgaswane Mountain Reserve"
+      ]
     },
     {
       "name": "Mafikeng Game Reserve",
@@ -1729,7 +1762,10 @@
       "lat": -30.62278,
       "lng": 25.50639,
       "wikidata": "Q1494266",
-      "coord_note": "location of the dam"
+      "coord_note": "location of the dam",
+      "renamed_from": [
+        "Gariep Dam Nature Reserve"
+      ]
     },
     {
       "name": "Sterkfontein Dam Nature Reserve",
@@ -1846,7 +1882,10 @@
       "lng": 18,
       "wikidata": "Q1534032",
       "coord_locked": true,
-      "wikidata_name": "Goegap Nature Reserve"
+      "wikidata_name": "Goegap Nature Reserve",
+      "renamed_from": [
+        "Goegap Nature Reserve"
+      ]
     },
     {
       "name": "Witsand Nature Reserve",

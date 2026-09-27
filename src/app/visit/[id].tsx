@@ -23,6 +23,7 @@ import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { formatVisitDate } from '@/lib/format';
+import { reserveNames } from '@/lib/names';
 import { usePassport } from '@/lib/passport-store';
 import { deleteLocalFile } from '@/lib/photos';
 
@@ -94,7 +95,9 @@ export default function EditVisitScreen() {
               <ThemedText type="smallBold" themeColor="textSecondary">
                 {formatVisitDate(stamp.visited_at).toUpperCase()}
               </ThemedText>
-              <ThemedText style={styles.reserveName}>{reserve?.name ?? 'Visit'}</ThemedText>
+              <ThemedText style={styles.reserveName}>
+                {reserve ? reserveNames(reserve.name).display : 'Visit'}
+              </ThemedText>
             </View>
 
             {replacing && !newPhotoUri ? (

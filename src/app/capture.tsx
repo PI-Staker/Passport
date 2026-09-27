@@ -3,7 +3,7 @@
 // and saving live in the passport store.
 import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Alert,
   FlatList,
@@ -19,12 +19,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CameraCapture } from '@/components/CameraCapture';
 import { PrimaryButton } from '@/components/PrimaryButton';
+import { SearchBar } from '@/components/SearchBar';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { usePassport } from '@/lib/passport-store';
+import { reserveNames } from '@/lib/names';
 import { deleteLocalFile } from '@/lib/photos';
+import { buildSearchIndex, matchesQuery } from '@/lib/search';
 
 export default function CaptureScreen() {
   const params = useLocalSearchParams<{ reserveId?: string }>();
@@ -35,41 +38,58 @@ export default function CaptureScreen() {
   const [photoUri, setPhotoUri] = useState<string | null>(null);
   const [writeUp, setWriteUp] = useState('');
   const [saving, setSaving] = useState(false);
+  const [query, setQuery] = useState('');
+  const searchIndex = useMemo(() => buildSearchIndex(reserves), [reserves]);
 
   const reserve = reserveId ? getReserve(reserveId) : undefined;
 
   // Opened from the passport's "Stamp a reserve" button: pick the reserve first.
   // (Later this could suggest the nearest reserve from GPS.)
   if (!reserve) {
+    const matches = reserves.filter((r) => matchesQuery(searchIndex, r.id, query));
     return (
       <ThemedView style={styles.screen}>
         <SafeAreaView style={styles.safeArea} edges={['left', 'right', 'bottom']}>
+          <View style={styles.pickHeader}>
+            <ThemedText type="smallBold" themeColor="textSecondary">
+              WHICH RESERVE ARE YOU AT?
+            </ThemedText>
+            <View style={styles.searchRow}>
+              <SearchBar value={query} onChangeText={setQuery} placeholder="Search by name, park or province" />
+            </View>
+          </View>
           <FlatList
-            data={reserves}
+            data={matches}
             keyExtractor={(r) => r.id}
-            contentContainerStyle={styles.content}
-            ListHeaderComponent={
-              <ThemedText type="smallBold" themeColor="textSecondary">
-                WHICH RESERVE ARE YOU AT?
+            contentContainerStyle={styles.pickList}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
+            ListEmptyComponent={
+              <ThemedText themeColor="textSecondary" style={styles.center}>
+                No reserves match “{query.trim()}”.
               </ThemedText>
             }
-            renderItem={({ item }) => (
-              <Pressable
-                onPress={() => setReserveId(item.id)}
-                style={({ pressed }) => pressed && styles.pressed}>
-                <ThemedView type="backgroundElement" style={styles.pickRow}>
-                  <ThemedText>{item.name}</ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary">
-                    {[item.org, item.province].filter(Boolean).join(' · ')}
-                  </ThemedText>
-                </ThemedView>
-              </Pressable>
-            )}
+            renderItem={({ item }) => {
+              const names = reserveNames(item.name);
+              return (
+                <Pressable
+                  onPress={() => setReserveId(item.id)}
+                  style={({ pressed }) => pressed && styles.pressed}>
+                  <ThemedView type="backgroundElement" style={styles.pickRow}>
+                    <ThemedText>{names.display}</ThemedText>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      {[item.org, item.province].filter(Boolean).join(' · ')}
+                    </ThemedText>
+                  </ThemedView>
+                </Pressable>
+              );
+            }}
           />
         </SafeAreaView>
       </ThemedView>
     );
   }
+  const names = reserveNames(reserve.name);
 
   const retake = () => {
     if (photoUri) deleteLocalFile(photoUri);
@@ -103,7 +123,7 @@ export default function CaptureScreen() {
               <ThemedText type="smallBold" themeColor="textSecondary">
                 STAMPING
               </ThemedText>
-              <ThemedText style={styles.reserveName}>{reserve.name}</ThemedText>
+              <ThemedText style={styles.reserveName}>{names.display}</ThemedText>
             </View>
 
             {photoUri ? (
@@ -165,6 +185,22 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.6,
+  },
+  pickHeader: {
+    paddingHorizontal: Spacing.three,
+    paddingTop: Spacing.three,
+    gap: Spacing.two,
+  },
+  searchRow: {
+    flexDirection: 'row',
+  },
+  pickList: {
+    padding: Spacing.three,
+    gap: Spacing.two,
+  },
+  center: {
+    textAlign: 'center',
+    paddingVertical: Spacing.five,
   },
   pickRow: {
     padding: Spacing.three,

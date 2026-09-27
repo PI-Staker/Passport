@@ -6,6 +6,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { stampLabel } from '@/lib/format';
+import { reserveNames } from '@/lib/names';
 import type { Reserve } from '@/lib/types';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -19,12 +20,13 @@ type Props = {
 export function StampCard({ reserve, visitCount, size, onPress }: Props) {
   const theme = useTheme();
   const stamped = visitCount > 0;
+  const names = reserveNames(reserve.name);
 
   return (
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel={`${reserve.name}, ${stamped ? `stamped ${visitCount} time${visitCount > 1 ? 's' : ''}` : 'not yet stamped'}`}
+      accessibilityLabel={`${names.display}, ${stamped ? `stamped ${visitCount} time${visitCount > 1 ? 's' : ''}` : 'not yet stamped'}`}
       style={({ pressed }) => [styles.slot, { width: size }, pressed && styles.pressed]}>
       <View
         style={[
@@ -40,7 +42,7 @@ export function StampCard({ reserve, visitCount, size, onPress }: Props) {
               style={[styles.stampText, { color: theme.stampInk }]}
               numberOfLines={2}
               adjustsFontSizeToFit>
-              {stampLabel(reserve.name)}
+              {stampLabel(names.tile)}
             </ThemedText>
           </View>
         )}
@@ -55,7 +57,7 @@ export function StampCard({ reserve, visitCount, size, onPress }: Props) {
         themeColor={stamped ? 'text' : 'textSecondary'}
         style={styles.name}
         numberOfLines={2}>
-        {reserve.name}
+        {names.tile}
       </ThemedText>
     </Pressable>
   );

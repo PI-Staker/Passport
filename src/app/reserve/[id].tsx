@@ -8,6 +8,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { VisitCard } from '@/components/VisitCard';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { reserveNames } from '@/lib/names';
 import { usePassport } from '@/lib/passport-store';
 
 export default function ReserveDetailScreen() {
@@ -52,6 +53,7 @@ export default function ReserveDetailScreen() {
   }
 
   const visits = stampsFor(reserve.id);
+  const names = reserveNames(reserve.name);
   const subtitle = [reserve.org, reserve.province].filter(Boolean).join(' · ');
 
   return (
@@ -59,9 +61,19 @@ export default function ReserveDetailScreen() {
       <SafeAreaView style={styles.safeArea} edges={['left', 'right', 'bottom']}>
         <ScrollView contentContainerStyle={styles.content}>
           <View style={styles.heading}>
+            {names.park ? (
+              <ThemedText type="smallBold" themeColor="textSecondary">
+                {names.park.toUpperCase()}
+              </ThemedText>
+            ) : null}
             <ThemedText type="subtitle" style={styles.title}>
-              {reserve.name}
+              {names.section ?? names.display}
             </ThemedText>
+            {names.alias ? (
+              <ThemedText type="small" themeColor="textSecondary">
+                Also known as {names.alias}
+              </ThemedText>
+            ) : null}
             {subtitle ? <ThemedText themeColor="textSecondary">{subtitle}</ThemedText> : null}
           </View>
 
@@ -81,7 +93,7 @@ export default function ReserveDetailScreen() {
                 key={visit.id}
                 visit={visit}
                 photoUrl={photoUrlFor(visit)}
-                reserveName={reserve.name}
+                reserveName={names.display}
                 busy={deletingId === visit.id}
                 onEdit={() => router.push({ pathname: '/visit/[id]', params: { id: visit.id } })}
                 onDelete={() => confirmDelete(visit.id)}

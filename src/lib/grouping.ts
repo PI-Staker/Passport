@@ -2,6 +2,11 @@
 // "Group by" / "Show" choices. Pure functions — no UI, no data fetching.
 import type { Reserve } from './types';
 
+export const PROVINCES = [
+  'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo',
+  'Mpumalanga', 'North West', 'Northern Cape', 'Western Cape',
+] as const;
+
 export type GroupBy = 'province' | 'org' | 'none';
 export type ShowFilter = 'all' | 'stamped' | 'unstamped';
 
@@ -40,6 +45,8 @@ export function buildSections(
   isStamped: (reserveId: string) => boolean,
   groupBy: GroupBy,
   show: ShowFilter,
+  /** Extra filter (search, province). Group progress still counts every reserve in the group. */
+  include: (reserve: Reserve) => boolean = () => true,
 ): ReserveSection[] {
   const groups = new Map<string, Reserve[]>();
   for (const r of reserves) {
@@ -50,7 +57,7 @@ export function buildSections(
   }
 
   const keep = (r: Reserve) =>
-    show === 'all' || (show === 'stamped' ? isStamped(r.id) : !isStamped(r.id));
+    include(r) && (show === 'all' || (show === 'stamped' ? isStamped(r.id) : !isStamped(r.id)));
 
   return [...groups.entries()]
     .sort(([a], [b]) => (a === OTHER ? 1 : b === OTHER ? -1 : a.localeCompare(b)))
