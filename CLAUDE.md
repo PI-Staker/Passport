@@ -129,10 +129,15 @@ repo/
 │       ├── StampCard.tsx
 │       └── CameraCapture.tsx # Step 3
 ├── data/
-│   └── reserves.json         # seed data: SANParks/CapeNature list
+│   ├── reserves.json         # SOURCE OF TRUTH for the reserve list (+ status, sources)
+│   └── reserves-review.csv   # generated, for reviewing in Excel
 ├── schema.sql                # full DB schema + RLS, source of truth
 ├── supabase/
-│   └── seed-dev-reserves.sql # 15 placeholder reserves for development
+│   ├── seed-dev-reserves.sql # 15 placeholder reserves (early development only)
+│   └── seed-reserves.sql     # GENERATED from data/reserves.json — the real list
+├── scripts/reserves/         # fetch-coordinates.mjs, build.mjs (see docs)
+├── docs/
+│   └── reserve-research.md   # how the reserve list is researched + weekly status pass
 └── assets/
 ```
 

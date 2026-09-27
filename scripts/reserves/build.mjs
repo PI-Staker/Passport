@@ -9,6 +9,8 @@ import { fileURLToPath } from 'node:url';
 const root = (p) => fileURLToPath(new URL(`../../${p}`, import.meta.url));
 const data = JSON.parse(readFileSync(root('data/reserves.json'), 'utf8'));
 
+const STATUSES = ['open', 'limited', 'closed', 'unknown'];
+
 const PROVINCES = [
   'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo',
   'Mpumalanga', 'North West', 'Northern Cape', 'Western Cape',
@@ -27,6 +29,12 @@ for (const [i, r] of data.reserves.entries()) {
   const hasLat = typeof r.lat === 'number';
   const hasLng = typeof r.lng === 'number';
   if (hasLat !== hasLng) errors.push(`${where}: lat and lng must both be set or both be empty`);
+  if (r.status !== undefined && !STATUSES.includes(r.status)) errors.push(`${where}: unknown status "${r.status}"`);
+  if (r.status && !r.checked) errors.push(`${where}: has a status but no "checked" date`);
+}
+for (const x of data.excluded ?? []) {
+  if (seen.has(x.name)) errors.push(`"${x.name}" is both in reserves and excluded`);
+  if (!x.reason) errors.push(`excluded "${x.name}": missing reason`);
 }
 if (errors.length) {
   console.error('reserves.json has problems:\n  ' + errors.join('\n  '));
@@ -78,13 +86,23 @@ const csv = (v) => {
   const s = v === undefined || v === null ? '' : String(v);
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };
-const header = ['Province', 'Organisation', 'Reserve', 'Needs checking', 'Notes', 'Has map location', 'Lat', 'Lng'];
-const sorted = [...data.reserves].sort(
-  (a, b) => a.province.localeCompare(b.province) || a.org.localeCompare(b.org) || a.name.localeCompare(b.name),
-);
+const header = [
+  'Province', 'Organisation', 'Reserve', 'Status', 'Status note', 'Last checked',
+  'Decision needed', 'Notes', 'Has map location', 'Sources',
+];
+const byPlace = (a, b) =>
+  a.province.localeCompare(b.province) || a.org.localeCompare(b.org) || a.name.localeCompare(b.name);
 const lines = [header.join(',')].concat(
-  sorted.map((r) =>
-    [r.province, r.org, r.name, r.check ?? '', r.note ?? '', typeof r.lat === 'number' ? 'yes' : 'NO', r.lat, r.lng]
+  [...data.reserves].sort(byPlace).map((r) =>
+    [
+      r.province, r.org, r.name, r.status ?? 'not checked yet', r.status_note ?? '', r.checked ?? '',
+      r.check ?? '', r.note ?? '', typeof r.lat === 'number' ? 'yes' : 'NO', (r.sources ?? []).join(' '),
+    ]
+      .map(csv)
+      .join(','),
+  ),
+  [...(data.excluded ?? [])].sort(byPlace).map((x) =>
+    [x.province, x.org, x.name, 'EXCLUDED', x.reason, x.checked ?? '', '', '', '', (x.sources ?? []).join(' ')]
       .map(csv)
       .join(','),
   ),
@@ -96,6 +114,9 @@ writeFileSync(root('data/reserves-review.csv'), '﻿' + lines.join('\r\n') + '\r
 const count = (pred) => data.reserves.filter(pred).length;
 console.log(`${data.reserves.length} reserves`);
 for (const p of PROVINCES) console.log(`  ${p.padEnd(14)} ${count((r) => r.province === p)}`);
-console.log(`Needs checking: ${count((r) => r.check)}`);
+for (const s of STATUSES) console.log(`Status ${s.padEnd(8)} ${count((r) => r.status === s)}`);
+console.log(`Status not checked yet: ${count((r) => !r.status)}`);
+console.log(`Excluded: ${(data.excluded ?? []).length}`);
+console.log(`Decision needed: ${count((r) => r.check)}`);
 console.log(`Missing map location: ${count((r) => typeof r.lat !== 'number')}`);
 console.log('Wrote supabase/seed-reserves.sql and data/reserves-review.csv');
