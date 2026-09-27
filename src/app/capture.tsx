@@ -1,17 +1,30 @@
-// Capture flow, Step 1 version: the camera is faked (tap the box to "take" a
-// photo). Step 3 replaces the placeholder with CameraCapture — permissions,
-// compression, offline handling — built and tested on its own first.
+// Capture flow: pick reserve (if not given) → photograph the entrance sign →
+// optional write-up → save. The camera itself lives in CameraCapture; upload
+// and saving live in the passport store.
+import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { Alert, FlatList, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import {
+  Alert,
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { CameraCapture } from '@/components/CameraCapture';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { usePassport } from '@/lib/passport-store';
+import { deleteLocalFile } from '@/lib/photos';
 
 export default function CaptureScreen() {
   const params = useLocalSearchParams<{ reserveId?: string }>();
@@ -19,7 +32,7 @@ export default function CaptureScreen() {
   const theme = useTheme();
 
   const [reserveId, setReserveId] = useState(params.reserveId);
-  const [photoTaken, setPhotoTaken] = useState(false);
+  const [photoUri, setPhotoUri] = useState<string | null>(null);
   const [writeUp, setWriteUp] = useState('');
   const [saving, setSaving] = useState(false);
 
@@ -58,62 +71,76 @@ export default function CaptureScreen() {
     );
   }
 
+  const retake = () => {
+    if (photoUri) deleteLocalFile(photoUri);
+    setPhotoUri(null);
+  };
+
   const save = async () => {
+    if (!photoUri) return;
     setSaving(true);
     try {
-      await addStamp({ reserveId: reserve.id, writeUp: writeUp.trim() || null });
+      await addStamp({ reserveId: reserve.id, writeUp: writeUp.trim() || null, photoUri });
       router.back();
     } catch (e) {
       setSaving(false);
-      Alert.alert('Couldn’t save your stamp', e instanceof Error ? e.message : String(e));
+      // The photo stays on screen, so the user can just tap again once they have signal.
+      Alert.alert(
+        'Couldn’t save your stamp',
+        `Your photo is still here — try again when you have signal.\n\n(${e instanceof Error ? e.message : String(e)})`,
+      );
     }
   };
 
   return (
     <ThemedView style={styles.screen}>
       <SafeAreaView style={styles.safeArea} edges={['left', 'right', 'bottom']}>
-        <View style={styles.content}>
-          <View>
-            <ThemedText type="smallBold" themeColor="textSecondary">
-              STAMPING
-            </ThemedText>
-            <ThemedText style={styles.reserveName}>{reserve.name}</ThemedText>
-          </View>
-
-          <Pressable
-            onPress={() => setPhotoTaken(true)}
-            accessibilityRole="button"
-            accessibilityLabel="Take photo of the entrance sign">
-            <ThemedView
-              type={photoTaken ? 'backgroundSelected' : 'backgroundElement'}
-              style={[styles.camera, { borderColor: photoTaken ? theme.accent : theme.slotOutline }]}>
-              <ThemedText themeColor={photoTaken ? 'text' : 'textSecondary'} style={styles.cameraText}>
-                {photoTaken
-                  ? '✓ Photo taken (placeholder)'
-                  : 'Tap to photograph the entrance sign\n(camera arrives in Step 3)'}
+        <KeyboardAvoidingView
+          style={styles.flex}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+          <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+            <View>
+              <ThemedText type="smallBold" themeColor="textSecondary">
+                STAMPING
               </ThemedText>
-            </ThemedView>
-          </Pressable>
+              <ThemedText style={styles.reserveName}>{reserve.name}</ThemedText>
+            </View>
 
-          <TextInput
-            value={writeUp}
-            onChangeText={setWriteUp}
-            placeholder="Add a write-up (optional)"
-            placeholderTextColor={theme.textSecondary}
-            multiline
-            style={[
-              styles.input,
-              { color: theme.text, backgroundColor: theme.backgroundElement },
-            ]}
-          />
-        </View>
-        <View style={styles.footer}>
-          <PrimaryButton
-            label={saving ? 'Saving…' : 'Get the stamp'}
-            onPress={save}
-            disabled={!photoTaken || saving}
-          />
-        </View>
+            {photoUri ? (
+              <View>
+                <Image source={{ uri: photoUri }} style={styles.preview} contentFit="cover" />
+                <Pressable
+                  onPress={retake}
+                  disabled={saving}
+                  accessibilityRole="button"
+                  style={({ pressed }) => [styles.retake, pressed && styles.pressed]}>
+                  <ThemedText type="smallBold" style={styles.retakeText}>
+                    Retake
+                  </ThemedText>
+                </Pressable>
+              </View>
+            ) : (
+              <CameraCapture onCaptured={setPhotoUri} />
+            )}
+
+            <TextInput
+              value={writeUp}
+              onChangeText={setWriteUp}
+              placeholder="Add a write-up (optional)"
+              placeholderTextColor={theme.textSecondary}
+              multiline
+              editable={!saving}
+              style={[styles.input, { color: theme.text, backgroundColor: theme.backgroundElement }]}
+            />
+          </ScrollView>
+          <View style={styles.footer}>
+            <PrimaryButton
+              label={saving ? 'Saving…' : photoUri ? 'Get the stamp' : 'Take a photo first'}
+              onPress={save}
+              disabled={!photoUri || saving}
+            />
+          </View>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </ThemedView>
   );
@@ -129,8 +156,10 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: MaxContentWidth,
   },
+  flex: {
+    flex: 1,
+  },
   content: {
-    flexGrow: 1,
     padding: Spacing.three,
     gap: Spacing.three,
   },
@@ -147,17 +176,21 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     fontWeight: 700,
   },
-  camera: {
-    aspectRatio: 4 / 3,
+  preview: {
+    aspectRatio: 3 / 4,
     borderRadius: Spacing.three,
-    borderWidth: 2,
-    borderStyle: 'dashed',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: Spacing.three,
   },
-  cameraText: {
-    textAlign: 'center',
+  retake: {
+    position: 'absolute',
+    top: Spacing.three,
+    right: Spacing.three,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    paddingHorizontal: Spacing.three,
+    paddingVertical: Spacing.one,
+    borderRadius: 999,
+  },
+  retakeText: {
+    color: '#fff',
   },
   input: {
     minHeight: 100,

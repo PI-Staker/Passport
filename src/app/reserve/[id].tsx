@@ -1,3 +1,4 @@
+import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,7 +12,7 @@ import { usePassport } from '@/lib/passport-store';
 
 export default function ReserveDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { getReserve, stampsFor } = usePassport();
+  const { getReserve, stampsFor, photoUrlFor } = usePassport();
   const reserve = getReserve(id);
 
   if (!reserve) {
@@ -47,13 +48,27 @@ export default function ReserveDetailScreen() {
               Visit this reserve and photograph the entrance sign to collect its stamp.
             </ThemedText>
           ) : (
-            visits.map((visit) => (
+            visits.map((visit) => {
+              const photoUrl = photoUrlFor(visit);
+              return (
               <ThemedView key={visit.id} type="backgroundElement" style={styles.visit}>
-                <ThemedView type="backgroundSelected" style={styles.photoPlaceholder}>
-                  <ThemedText type="small" themeColor="textSecondary">
-                    Photo
-                  </ThemedText>
-                </ThemedView>
+                {photoUrl ? (
+                  <Image
+                    // cacheKey = storage path, so the photo stays cached even though
+                    // its signed URL changes every session
+                    source={{ uri: photoUrl, cacheKey: visit.photo_url }}
+                    style={styles.photo}
+                    contentFit="cover"
+                    transition={150}
+                    accessibilityLabel={`Photo from your visit to ${reserve.name}`}
+                  />
+                ) : (
+                  <ThemedView type="backgroundSelected" style={[styles.photo, styles.photoPlaceholder]}>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      {visit.photo_url ? 'Photo unavailable' : 'No photo'}
+                    </ThemedText>
+                  </ThemedView>
+                )}
                 <View style={styles.visitBody}>
                   <ThemedText type="smallBold">{formatVisitDate(visit.visited_at)}</ThemedText>
                   <ThemedText
@@ -66,7 +81,8 @@ export default function ReserveDetailScreen() {
                   </ThemedText>
                 </View>
               </ThemedView>
-            ))
+              );
+            })
           )}
         </ScrollView>
         <View style={styles.footer}>
@@ -107,20 +123,19 @@ const styles = StyleSheet.create({
     lineHeight: 32,
   },
   visit: {
-    flexDirection: 'row',
-    gap: Spacing.three,
-    padding: Spacing.three,
     borderRadius: Spacing.three,
+    overflow: 'hidden',
+  },
+  photo: {
+    width: '100%',
+    aspectRatio: 4 / 3,
   },
   photoPlaceholder: {
-    width: 72,
-    height: 72,
-    borderRadius: Spacing.two,
     alignItems: 'center',
     justifyContent: 'center',
   },
   visitBody: {
-    flex: 1,
+    padding: Spacing.three,
     gap: Spacing.half,
   },
   footer: {

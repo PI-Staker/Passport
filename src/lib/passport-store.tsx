@@ -11,10 +11,11 @@ import {
 } from 'react';
 
 import { ensureSignedIn } from './auth';
+import { deletePhoto, getPhotoUrls, uploadPhoto } from './photos';
 import { supabase } from './supabase';
 import type { Reserve, Stamp } from './types';
 
-type NewStamp = { reserveId: string; writeUp: string | null };
+type NewStamp = { reserveId: string; writeUp: string | null; photoUri: string };
 type Status = 'loading' | 'ready' | 'error';
 
 type PassportContextValue = {
@@ -26,7 +27,9 @@ type PassportContextValue = {
   getReserve: (id: string) => Reserve | undefined;
   /** Visits to one reserve, newest first. */
   stampsFor: (reserveId: string) => Stamp[];
-  /** Saves to Supabase; throws if the save fails so the caller can tell the user. */
+  /** Viewable URL for a stamp's photo, or undefined if none / not loaded. */
+  photoUrlFor: (stamp: Stamp) => string | undefined;
+  /** Uploads the photo, then saves the stamp. Throws on failure so the caller can tell the user. */
   addStamp: (stamp: NewStamp) => Promise<void>;
 };
 
@@ -47,10 +50,14 @@ async function loadPassport() {
   ]);
   if (reservesRes.error) throw reservesRes.error;
   if (stampsRes.error) throw stampsRes.error;
+  const stamps = stampsRes.data as Stamp[];
+  // Photos are nice-to-have here: if links fail, show placeholders, don't block the passport.
+  const photoUrls = await getPhotoUrls(stamps.map((s) => s.photo_url)).catch(() => ({}));
   return {
     userId,
     reserves: reservesRes.data as Reserve[],
-    stamps: stampsRes.data as Stamp[],
+    stamps,
+    photoUrls,
   };
 }
 
@@ -60,6 +67,7 @@ export function PassportProvider({ children }: { children: ReactNode }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [reserves, setReserves] = useState<Reserve[]>([]);
   const [stamps, setStamps] = useState<Stamp[]>([]);
+  const [photoUrls, setPhotoUrls] = useState<Record<string, string>>({});
 
   const load = useCallback((isCancelled: () => boolean = () => false) => {
     loadPassport().then(
@@ -68,6 +76,7 @@ export function PassportProvider({ children }: { children: ReactNode }) {
         setUserId(data.userId);
         setReserves(data.reserves);
         setStamps(data.stamps);
+        setPhotoUrls(data.photoUrls);
         setStatus('ready');
       },
       (e) => {
@@ -93,20 +102,26 @@ export function PassportProvider({ children }: { children: ReactNode }) {
   }, [load]);
 
   const addStamp = useCallback(
-    async ({ reserveId, writeUp }: NewStamp) => {
+    async ({ reserveId, writeUp, photoUri }: NewStamp) => {
       if (!userId) throw new Error('Not signed in yet');
+      const photoPath = await uploadPhoto(photoUri, userId);
       const { data, error: insertError } = await supabase
         .from('stamps')
         .insert({
           user_id: userId,
           reserve_id: reserveId,
-          photo_url: '', // real photo upload arrives in Step 3
+          photo_url: photoPath,
           write_up: writeUp,
         })
         .select()
         .single();
-      if (insertError) throw new Error(insertError.message);
+      if (insertError) {
+        await deletePhoto(photoPath).catch(() => {}); // don't leave an orphaned photo
+        throw new Error(insertError.message);
+      }
       setStamps((prev) => [...prev, data as Stamp]);
+      // Show the just-taken local file straight away instead of downloading it back.
+      setPhotoUrls((prev) => ({ ...prev, [photoPath]: photoUri }));
       // TODO(Step 5): recompute challenge_progress here (see schema.sql notes).
     },
     [userId],
@@ -124,9 +139,10 @@ export function PassportProvider({ children }: { children: ReactNode }) {
         stamps
           .filter((s) => s.reserve_id === reserveId)
           .sort((a, b) => b.visited_at.localeCompare(a.visited_at)),
+      photoUrlFor: (stamp) => (stamp.photo_url ? photoUrls[stamp.photo_url] : undefined),
       addStamp,
     }),
-    [status, error, retry, reserves, stamps, addStamp],
+    [status, error, retry, reserves, stamps, photoUrls, addStamp],
   );
 
   return <PassportContext.Provider value={value}>{children}</PassportContext.Provider>;
