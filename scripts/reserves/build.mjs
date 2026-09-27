@@ -42,9 +42,13 @@ if (errors.length) {
 }
 
 // ---- SQL ------------------------------------------------------------------
+// Only reserves we can vouch for go into the app: "unknown" status stays in
+// reserves.json (so a status pass can promote it) but is left out of the seed.
+const published = data.reserves.filter((r) => r.status !== 'unknown');
+
 const sql = (v) => (v === undefined || v === null ? 'null' : typeof v === 'number' ? String(v) : `'${String(v).replace(/'/g, "''")}'`);
 
-const values = data.reserves
+const values = published
   .map((r) => `  (${sql(r.name)}, ${sql(r.org)}, ${sql(r.province)}, ${sql(r.lat)}, ${sql(r.lng)})`)
   .join(',\n');
 
@@ -66,7 +70,7 @@ on conflict (name) do update set
 -- Remove reserves that are no longer in the list and have no stamps.
 delete from reserves r
 where r.name not in (
-${data.reserves.map((r) => '  ' + sql(r.name)).join(',\n')}
+${published.map((r) => '  ' + sql(r.name)).join(',\n')}
 )
 and not exists (select 1 from stamps s where s.reserve_id = r.id);
 
@@ -75,7 +79,7 @@ and not exists (select 1 from stamps s where s.reserve_id = r.id);
 select r.name as "not in list but has stamps", count(s.id) as stamps
 from reserves r join stamps s on s.reserve_id = r.id
 where r.name not in (
-${data.reserves.map((r) => '  ' + sql(r.name)).join(',\n')}
+${published.map((r) => '  ' + sql(r.name)).join(',\n')}
 )
 group by r.name;
 `;
@@ -112,7 +116,7 @@ writeFileSync(root('data/reserves-review.csv'), '﻿' + lines.join('\r\n') + '\r
 
 // ---- summary --------------------------------------------------------------
 const count = (pred) => data.reserves.filter(pred).length;
-console.log(`${data.reserves.length} reserves`);
+console.log(`${data.reserves.length} reserves in the list, ${published.length} published to the app (unknown status left out)`);
 for (const p of PROVINCES) console.log(`  ${p.padEnd(14)} ${count((r) => r.province === p)}`);
 for (const s of STATUSES) console.log(`Status ${s.padEnd(8)} ${count((r) => r.status === s)}`);
 console.log(`Status not checked yet: ${count((r) => !r.status)}`);

@@ -2,7 +2,7 @@
 Eastern Cape,Eastern Cape Parks & Tourism,Baviaanskloof Nature Reserve,not checked yet,,,,,yes,
 Eastern Cape,Eastern Cape Parks & Tourism,Commando Drift Nature Reserve,not checked yet,,,,,yes,
 Eastern Cape,Eastern Cape Parks & Tourism,Dwesa-Cwebe Nature Reserve,not checked yet,,,,,yes,
-Eastern Cape,Eastern Cape Parks & Tourism,East London Coast Nature Reserve,open,"Made up of 10 small coastal reserves (Cape Morgan, Double Mouth, Kwelera, Nahoon, Gulu…)",2026-09-27,"One stamp for all 10 coastal reserves, or split like the big parks?",,yes,https://www.sa-venues.com/game-reserves/east-london-coast.php
+Eastern Cape,Eastern Cape Parks & Tourism,East London Coast Nature Reserve,open,"Made up of 10 small coastal reserves (Cape Morgan, Double Mouth, Kwelera, Nahoon, Gulu…)",2026-09-27,,,yes,https://www.sa-venues.com/game-reserves/east-london-coast.php
 Eastern Cape,Eastern Cape Parks & Tourism,Fort Fordyce Nature Reserve,not checked yet,,,,,yes,
 Eastern Cape,Eastern Cape Parks & Tourism,Great Fish River Nature Reserve,not checked yet,,,,,yes,
 Eastern Cape,Eastern Cape Parks & Tourism,Hluleka Nature Reserve,not checked yet,,,,,yes,
@@ -82,8 +82,8 @@ KwaZulu-Natal,iSimangaliso Wetland Park Authority,iSimangaliso Wetland Park – 
 KwaZulu-Natal,iSimangaliso Wetland Park Authority,iSimangaliso Wetland Park – Sodwana Bay,not checked yet,,,,,yes,
 KwaZulu-Natal,iSimangaliso Wetland Park Authority,iSimangaliso Wetland Park – uMkhuze,not checked yet,,,,,yes,
 KwaZulu-Natal,iSimangaliso Wetland Park Authority,iSimangaliso Wetland Park – Western Shores,not checked yet,,,,,yes,
-KwaZulu-Natal,Msinsi (uMngeni-uThukela Water),Albert Falls Dam Nature Reserve,open,,2026-09-27,"Run by Msinsi, a state-owned water utility subsidiary (not a conservation agency) — in scope?",,yes,https://msinsi.co.za/nature-based-tourism/msinsi-albert-falls-dam/
-KwaZulu-Natal,Msinsi (uMngeni-uThukela Water),Hazelmere Dam Nature Reserve,open,,2026-09-27,"Run by Msinsi, a state-owned water utility subsidiary (not a conservation agency) — in scope?",,yes,https://msinsi.co.za.dedi314.cpt1.host-h.net/nature-based-tourism/msinsi-hazelmere/
+KwaZulu-Natal,Msinsi (uMngeni-uThukela Water),Albert Falls Dam Nature Reserve,open,,2026-09-27,,,yes,https://msinsi.co.za/nature-based-tourism/msinsi-albert-falls-dam/
+KwaZulu-Natal,Msinsi (uMngeni-uThukela Water),Hazelmere Dam Nature Reserve,open,,2026-09-27,,,yes,https://msinsi.co.za.dedi314.cpt1.host-h.net/nature-based-tourism/msinsi-hazelmere/
 Limpopo,Limpopo Provincial Parks,Atherstone Collaborative Nature Reserve,open,,2026-09-27,,,yes,https://en.wikipedia.org/wiki/Atherstone_Nature_Reserve
 Limpopo,Limpopo Provincial Parks,Blouberg Nature Reserve,open,,2026-09-27,,,yes,https://www.lwr.gov.za/
 Limpopo,Limpopo Provincial Parks,D'Nyala Nature Reserve,open,,2026-09-27,,,yes,https://www.lwr.gov.za/
@@ -112,7 +112,6 @@ Mpumalanga,Mpumalanga Tourism & Parks,Blyde River Canyon Nature Reserve,open,,20
 Mpumalanga,Mpumalanga Tourism & Parks,Loskop Dam Nature Reserve,open,,2026-09-27,,,yes,https://www.mpumalanga.com/our-provincial-parks
 Mpumalanga,Mpumalanga Tourism & Parks,Mabusa Nature Reserve,open,,2026-09-27,,,NO,https://www.mpumalanga.com/our-provincial-parks
 Mpumalanga,Mpumalanga Tourism & Parks,Mahushe Shongwe Nature Reserve,open,,2026-09-27,,,yes,https://www.mpumalanga.com/our-provincial-parks
-Mpumalanga,Mpumalanga Tourism & Parks,Manyeleti Nature Reserve,limited,Visited via the lodges inside the reserve,2026-09-27,Lodge-guests-only reserve — include? (same question as Madikwe),,NO,https://www.mpumalanga.com/our-provincial-parks
 Mpumalanga,Mpumalanga Tourism & Parks,Mkhombo Nature Reserve,open,,2026-09-27,,,yes,https://www.mpumalanga.com/our-provincial-parks
 Mpumalanga,Mpumalanga Tourism & Parks,Mthethomusha Nature Reserve,open,,2026-09-27,,,yes,https://www.mpumalanga.com/our-provincial-parks
 Mpumalanga,Mpumalanga Tourism & Parks,Nooitgedacht Dam Nature Reserve,open,,2026-09-27,,,yes,https://www.mpumalanga.com/our-provincial-parks
@@ -127,7 +126,6 @@ North West,North West Parks,Borakalalo Game Reserve,open,,2026-09-27,,,yes,https
 North West,North West Parks,Boskop Dam Nature Reserve,open,,2026-09-27,,,yes,https://ho.org.za/parks/
 North West,North West Parks,Botsalano Game Reserve,open,,2026-09-27,,,yes,https://ho.org.za/parks/
 North West,North West Parks,Kgaswane Mountain Reserve (Rustenburg Nature Reserve),open,,2026-09-27,,,yes,https://ho.org.za/parks/
-North West,North West Parks,Madikwe Game Reserve,limited,Not open to day visitors — lodge guests only,2026-09-27,Lodge-guests-only reserve — include?,,yes,https://ho.org.za/parks/
 North West,North West Parks,Mafikeng Game Reserve,open,,2026-09-27,,,yes,https://ho.org.za/parks/
 North West,North West Parks,Molemane Eye Nature Reserve,open,,2026-09-27,,,yes,https://ho.org.za/parks/
 North West,North West Parks,Molopo Game Reserve,open,,2026-09-27,,,NO,https://ho.org.za/parks/
@@ -184,6 +182,8 @@ Western Cape,SANParks,Table Mountain National Park – Table Mountain,not checke
 Western Cape,SANParks,West Coast National Park,not checked yet,,,,,yes,
 Eastern Cape,Eastern Cape Parks & Tourism,Great Kei Nature Reserve,EXCLUDED,Not a separate reserve — the Great Kei River is the northern boundary of East London Coast Nature Reserve,2026-09-27,,,,https://www.sa-venues.com/game-reserves/east-london-coast.php
 Gauteng,SANParks,Groenkloof National Park,EXCLUDED,SANParks head office grounds — no visitors allowed in the park,2026-09-27,,,,https://www.sanparks.org/wp-content/uploads/2021/03/groenkloof.pdf
+Mpumalanga,Mpumalanga Tourism & Parks,Manyeleti Nature Reserve,EXCLUDED,Lodge guests only — no day visitors (rule: lodge-only reserves are excluded),2026-09-27,,,,https://www.mpumalanga.com/our-provincial-parks
 Mpumalanga,Mpumalanga Tourism & Parks,Mdala Game Reserve,EXCLUDED,Not on MTPA's current list of provincial parks,2026-09-27,,,,https://www.mpumalanga.com/our-provincial-parks
+North West,North West Parks,Madikwe Game Reserve,EXCLUDED,Lodge guests only — no day visitors (rule: lodge-only reserves are excluded),2026-09-27,,,,https://ho.org.za/parks/
 North West,North West Parks,Marico Bosveld Nature Reserve,EXCLUDED,Not on North West Parks' current list of parks,2026-09-27,,,,https://ho.org.za/parks/
 North West,North West Parks,SA Lombard Nature Reserve,EXCLUDED,"North West Parks lists it as ""NOT OPEN TO THE PUBLIC""",2026-09-27,,,,https://ho.org.za/parks/

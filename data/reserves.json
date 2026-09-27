@@ -828,8 +828,7 @@
       "sources": [
         "https://msinsi.co.za/nature-based-tourism/msinsi-albert-falls-dam/"
       ],
-      "checked": "2026-09-27",
-      "check": "Run by Msinsi, a state-owned water utility subsidiary (not a conservation agency) — in scope?"
+      "checked": "2026-09-27"
     },
     {
       "name": "Spioenkop Dam Nature Reserve",
@@ -900,8 +899,7 @@
       "sources": [
         "https://msinsi.co.za.dedi314.cpt1.host-h.net/nature-based-tourism/msinsi-hazelmere/"
       ],
-      "checked": "2026-09-27",
-      "check": "Run by Msinsi, a state-owned water utility subsidiary (not a conservation agency) — in scope?"
+      "checked": "2026-09-27"
     },
     {
       "name": "Queen Elizabeth Park Nature Reserve",
@@ -1112,8 +1110,7 @@
       "sources": [
         "https://www.sa-venues.com/game-reserves/east-london-coast.php"
       ],
-      "checked": "2026-09-27",
-      "check": "One stamp for all 10 coastal reserves, or split like the big parks?"
+      "checked": "2026-09-27"
     },
     {
       "name": "Umtiza Nature Reserve",
@@ -1284,19 +1281,6 @@
       "checked": "2026-09-27"
     },
     {
-      "name": "Manyeleti Nature Reserve",
-      "org": "Mpumalanga Tourism & Parks",
-      "province": "Mpumalanga",
-      "wikidata_name": "Manyeleti Game Reserve",
-      "status": "limited",
-      "status_note": "Visited via the lodges inside the reserve",
-      "sources": [
-        "https://www.mpumalanga.com/our-provincial-parks"
-      ],
-      "checked": "2026-09-27",
-      "check": "Lodge-guests-only reserve — include? (same question as Madikwe)"
-    },
-    {
       "name": "Andover Nature Reserve",
       "org": "Mpumalanga Tourism & Parks",
       "province": "Mpumalanga",
@@ -1319,21 +1303,6 @@
         "https://ho.org.za/parks/"
       ],
       "checked": "2026-09-27"
-    },
-    {
-      "name": "Madikwe Game Reserve",
-      "org": "North West Parks",
-      "province": "North West",
-      "lat": -24.8167,
-      "lng": 26.2167,
-      "wikidata": "Q1380373",
-      "status": "limited",
-      "status_note": "Not open to day visitors — lodge guests only",
-      "sources": [
-        "https://ho.org.za/parks/"
-      ],
-      "checked": "2026-09-27",
-      "check": "Lodge-guests-only reserve — include?"
     },
     {
       "name": "Borakalalo Game Reserve",
@@ -2060,6 +2029,26 @@
       "org": "Mpumalanga Tourism & Parks",
       "province": "Mpumalanga",
       "reason": "Not on MTPA's current list of provincial parks",
+      "sources": [
+        "https://www.mpumalanga.com/our-provincial-parks"
+      ],
+      "checked": "2026-09-27"
+    },
+    {
+      "name": "Madikwe Game Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "reason": "Lodge guests only — no day visitors (rule: lodge-only reserves are excluded)",
+      "sources": [
+        "https://ho.org.za/parks/"
+      ],
+      "checked": "2026-09-27"
+    },
+    {
+      "name": "Manyeleti Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "reason": "Lodge guests only — no day visitors (rule: lodge-only reserves are excluded)",
       "sources": [
         "https://www.mpumalanga.com/our-provincial-parks"
       ],

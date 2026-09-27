@@ -36,6 +36,18 @@ and `checked` date, so a later pass can see why and re-check if things change.
 
 - **Scope:** government-run (national + provincial) reserves open to visitors.
   No private reserves, municipal reserves, or marine-only protected areas.
+  State-owned operators that aren't conservation agencies (e.g. Msinsi, the
+  water utility's resort arm) are in **if it's a genuine place to visit** —
+  decided case by case (Albert Falls, Hazelmere: yes).
+- **Lodge-guests-only reserves are excluded** (Madikwe, Manyeleti). If you can't
+  drive in as a day visitor, it's not a stamp. Booking-required is fine
+  (`limited`) as long as anyone can book.
+- **`unknown` status is not published.** It stays in `reserves.json` so a pass
+  can confirm it, but `build.mjs` leaves it out of the seed — the app only shows
+  reserves we can vouch for. Confirming one (→ `open`/`limited`) publishes it on
+  the next seed run.
+- **Collections of tiny reserves under one name stay as one stamp**
+  (East London Coast Nature Reserve = 10 coastal reserves, one stamp).
 - **Province:** where the **main gate** is (Kruger → Mpumalanga).
 - **Big parks are split into their separately gated sections** (Garden Route,
   Drakensberg, iSimangaliso, Table Mountain). The test: *you can't say you've
@@ -128,11 +140,12 @@ columns (planned).
 | Date | Who | Summary |
 |---|---|---|
 | 2026-09-27 | Claude (first pass) | Built list from official + Wikipedia sources; researched 68 flagged entries. 90 open, 3 limited, 7 unknown, 83 not yet checked (mostly well-known SANParks/Ezemvelo parks). Excluded 5: Groenkloof NP (no visitors), SA Lombard (not public), Great Kei (not a separate reserve), Mdala & Marico Bosveld (not on agency lists). Added Rust de Winter Dam, Makuya. |
+| 2026-09-27 | Owner decisions | Lodge-only excluded (Madikwe, Manyeleti); Msinsi in scope (Albert Falls, Hazelmere kept); East London Coast one stamp; unknown-status reserves not published. 174 of 181 published. |
 
 ## Candidates not yet added
 
 Found during research, not yet assessed — check scope/access before adding:
 
 - **KZN (Ezemvelo list):** Isandlwana (battlefield heritage site), Enseleni, Impendle, Karkloof, Mount Currie, Moor Park, Hlathikhulu Forest, Entumeni Forest, Sileza, Ncandu, Blinkwater, Umhlanga Lagoon, Skyline, Bluff, North Park, Himeville, uMngeni Vlei, Bulwer Forest.
-- **KZN (Msinsi):** Inanda Dam, Nagle Dam, Shongweni Dam — only if Msinsi is in scope.
+- **KZN (Msinsi — in scope, see Rules):** Inanda Dam, Nagle Dam, Shongweni Dam & Game Reserve.
 - **iSimangaliso:** Maphelane, Charters Creek, Ozabeni — currently not separate stamps.
