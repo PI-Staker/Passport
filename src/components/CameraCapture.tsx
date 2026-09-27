@@ -10,7 +10,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
-import { compressPhoto, deleteLocalFile } from '@/lib/photos';
+import { compressPhoto, deleteLocalFile, pickFromGallery } from '@/lib/photos';
 
 type Props = {
   onCaptured: (localUri: string) => void;
@@ -33,6 +33,20 @@ export function CameraCapture({ onCaptured }: Props) {
     );
   }
 
+  const chooseFromGallery = async () => {
+    if (busy) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const picked = await pickFromGallery();
+      if (picked) onCaptured(picked);
+      else setBusy(false); // cancelled
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+      setBusy(false);
+    }
+  };
+
   if (!permission.granted) {
     return (
       <ThemedView type="backgroundElement" style={[styles.frame, styles.message]}>
@@ -49,6 +63,9 @@ export function CameraCapture({ onCaptured }: Props) {
             <PrimaryButton label="Open settings" onPress={() => Linking.openSettings()} />
           </>
         )}
+        <Pressable onPress={chooseFromGallery} accessibilityRole="button">
+          <ThemedText type="linkPrimary">or choose a photo from your gallery</ThemedText>
+        </Pressable>
       </ThemedView>
     );
   }
@@ -82,17 +99,30 @@ export function CameraCapture({ onCaptured }: Props) {
             Couldn’t take photo: {error}
           </ThemedText>
         ) : null}
-        <Pressable
-          onPress={takePhoto}
-          disabled={!ready || busy}
-          accessibilityRole="button"
-          accessibilityLabel="Take photo"
-          style={({ pressed }) => [
-            styles.shutter,
-            (pressed || !ready || busy) && styles.shutterDim,
-          ]}>
-          {busy ? <ActivityIndicator color="#000" /> : <View style={styles.shutterInner} />}
-        </Pressable>
+        <View style={styles.controls}>
+          <Pressable
+            onPress={chooseFromGallery}
+            disabled={busy}
+            accessibilityRole="button"
+            accessibilityLabel="Choose from gallery"
+            style={({ pressed }) => [styles.sideButton, pressed && styles.shutterDim]}>
+            <ThemedText type="smallBold" style={styles.sideButtonText}>
+              Gallery
+            </ThemedText>
+          </Pressable>
+          <Pressable
+            onPress={takePhoto}
+            disabled={!ready || busy}
+            accessibilityRole="button"
+            accessibilityLabel="Take photo"
+            style={({ pressed }) => [
+              styles.shutter,
+              (pressed || !ready || busy) && styles.shutterDim,
+            ]}>
+            {busy ? <ActivityIndicator color="#000" /> : <View style={styles.shutterInner} />}
+          </Pressable>
+          <View style={styles.sideButton} />
+        </View>
       </View>
     </View>
   );
@@ -126,6 +156,27 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.6)',
     paddingHorizontal: Spacing.two,
     borderRadius: Spacing.one,
+  },
+  controls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    alignSelf: 'stretch',
+    paddingHorizontal: Spacing.four,
+  },
+  sideButton: {
+    width: 72,
+    alignItems: 'center',
+    paddingVertical: Spacing.one,
+    borderRadius: 999,
+  },
+  sideButtonText: {
+    color: '#fff',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingHorizontal: Spacing.two,
+    paddingVertical: Spacing.half,
+    borderRadius: 999,
+    overflow: 'hidden',
   },
   shutter: {
     width: 72,

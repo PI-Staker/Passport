@@ -4,6 +4,7 @@
 // tested on its own.
 import { File } from 'expo-file-system';
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
+import * as ImagePicker from 'expo-image-picker';
 
 import { supabase } from './supabase';
 
@@ -18,6 +19,17 @@ export async function compressPhoto(uri: string): Promise<string> {
   const rendered = await context.renderAsync();
   const result = await rendered.saveAsync({ format: SaveFormat.JPEG, compress: JPEG_QUALITY });
   return result.uri;
+}
+
+/**
+ * Lets the user choose a photo from their gallery (e.g. taken earlier with the
+ * phone's own camera at a gate with no signal). Returns a compressed local uri,
+ * or null if they cancelled. Re-encoding also strips EXIF (incl. GPS) metadata.
+ */
+export async function pickFromGallery(): Promise<string | null> {
+  const result = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ['images'], quality: 1 });
+  if (result.canceled || result.assets.length === 0) return null;
+  return compressPhoto(result.assets[0].uri);
 }
 
 /**

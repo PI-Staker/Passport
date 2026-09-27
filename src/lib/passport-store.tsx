@@ -16,6 +16,8 @@ import { supabase } from './supabase';
 import type { Reserve, Stamp } from './types';
 
 type NewStamp = { reserveId: string; writeUp: string | null; photoUri: string };
+/** newPhotoUri set = replace the photo (old one is deleted from storage after). */
+type StampEdit = { writeUp: string | null; newPhotoUri?: string };
 type Status = 'loading' | 'ready' | 'error';
 
 type PassportContextValue = {
@@ -25,12 +27,17 @@ type PassportContextValue = {
   reserves: Reserve[];
   stamps: Stamp[];
   getReserve: (id: string) => Reserve | undefined;
+  getStamp: (id: string) => Stamp | undefined;
   /** Visits to one reserve, newest first. */
   stampsFor: (reserveId: string) => Stamp[];
   /** Viewable URL for a stamp's photo, or undefined if none / not loaded. */
   photoUrlFor: (stamp: Stamp) => string | undefined;
   /** Uploads the photo, then saves the stamp. Throws on failure so the caller can tell the user. */
   addStamp: (stamp: NewStamp) => Promise<void>;
+  /** Edits a visit's write-up and/or replaces its photo. Throws on failure. */
+  updateStamp: (stampId: string, edit: StampEdit) => Promise<void>;
+  /** Deletes a visit and its photo. Throws on failure. */
+  deleteStamp: (stampId: string) => Promise<void>;
 };
 
 const PassportContext = createContext<PassportContextValue | null>(null);
@@ -127,6 +134,52 @@ export function PassportProvider({ children }: { children: ReactNode }) {
     [userId],
   );
 
+  const updateStamp = useCallback(
+    async (stampId: string, { writeUp, newPhotoUri }: StampEdit) => {
+      if (!userId) throw new Error('Not signed in yet');
+      const existing = stamps.find((s) => s.id === stampId);
+      if (!existing) throw new Error('Visit not found');
+
+      // Upload the new photo first; only remove the old one once the row points
+      // at the new one, so a failure never leaves the visit without a photo.
+      const photoPath = newPhotoUri ? await uploadPhoto(newPhotoUri, userId) : existing.photo_url;
+      const { data, error: updateError } = await supabase
+        .from('stamps')
+        .update({ write_up: writeUp, photo_url: photoPath })
+        .eq('id', stampId)
+        .select()
+        .single();
+      if (updateError) {
+        if (newPhotoUri) await deletePhoto(photoPath).catch(() => {});
+        throw new Error(updateError.message);
+      }
+      if (newPhotoUri && existing.photo_url) await deletePhoto(existing.photo_url).catch(() => {});
+
+      setStamps((prev) => prev.map((s) => (s.id === stampId ? (data as Stamp) : s)));
+      if (newPhotoUri) setPhotoUrls((prev) => ({ ...prev, [photoPath]: newPhotoUri }));
+    },
+    [userId, stamps],
+  );
+
+  const deleteStamp = useCallback(
+    async (stampId: string) => {
+      const existing = stamps.find((s) => s.id === stampId);
+      if (!existing) throw new Error('Visit not found');
+      // .select() returns the deleted rows — empty means nothing was deleted.
+      const { data, error: deleteError } = await supabase
+        .from('stamps')
+        .delete()
+        .eq('id', stampId)
+        .select('id');
+      if (deleteError) throw new Error(deleteError.message);
+      if (!data || data.length === 0) throw new Error('Visit could not be deleted');
+      if (existing.photo_url) await deletePhoto(existing.photo_url).catch(() => {});
+      setStamps((prev) => prev.filter((s) => s.id !== stampId));
+      // TODO(Step 5): recompute challenge_progress here too.
+    },
+    [stamps],
+  );
+
   const value = useMemo<PassportContextValue>(
     () => ({
       status,
@@ -135,14 +188,17 @@ export function PassportProvider({ children }: { children: ReactNode }) {
       reserves,
       stamps,
       getReserve: (id) => reserves.find((r) => r.id === id),
+      getStamp: (id) => stamps.find((s) => s.id === id),
       stampsFor: (reserveId) =>
         stamps
           .filter((s) => s.reserve_id === reserveId)
           .sort((a, b) => b.visited_at.localeCompare(a.visited_at)),
       photoUrlFor: (stamp) => (stamp.photo_url ? photoUrls[stamp.photo_url] : undefined),
       addStamp,
+      updateStamp,
+      deleteStamp,
     }),
-    [status, error, retry, reserves, stamps, photoUrls, addStamp],
+    [status, error, retry, reserves, stamps, photoUrls, addStamp, updateStamp, deleteStamp],
   );
 
   return <PassportContext.Provider value={value}>{children}</PassportContext.Provider>;

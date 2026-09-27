@@ -20,6 +20,7 @@ export default function RootLayout() {
             <Stack.Screen name="passport" options={{ headerShown: false, title: 'Passport' }} />
             <Stack.Screen name="reserve/[id]" options={{ title: '' }} />
             <Stack.Screen name="capture" options={{ title: 'New stamp', presentation: 'modal' }} />
+            <Stack.Screen name="visit/[id]" options={{ title: 'Edit visit', presentation: 'modal' }} />
           </Stack>
         </PassportGate>
       </PassportProvider>

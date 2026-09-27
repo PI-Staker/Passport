@@ -20,6 +20,7 @@ export const Colors = {
     onAccent: '#ffffff',     // text on accent
     stampInk: '#2F6B3A',     // a filled stamp
     slotOutline: '#B9BCC4',  // an empty, not-yet-stamped slot
+    danger: '#B42318',       // destructive actions (delete)
   },
   dark: {
     text: '#ffffff',
@@ -31,6 +32,7 @@ export const Colors = {
     onAccent: '#0B1A0E',
     stampInk: '#7CC08A',
     slotOutline: '#4A4E55',
+    danger: '#F97066',
   },
 } as const;
 

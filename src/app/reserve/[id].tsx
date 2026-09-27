@@ -1,19 +1,47 @@
-import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { VisitCard } from '@/components/VisitCard';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
-import { formatVisitDate } from '@/lib/format';
 import { usePassport } from '@/lib/passport-store';
 
 export default function ReserveDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { getReserve, stampsFor, photoUrlFor } = usePassport();
+  const { getReserve, stampsFor, photoUrlFor, deleteStamp } = usePassport();
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const reserve = getReserve(id);
+
+  const confirmDelete = (stampId: string) => {
+    Alert.alert(
+      'Delete this visit?',
+      'Its photo and write-up will be permanently deleted. This can’t be undone.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            setDeletingId(stampId);
+            try {
+              await deleteStamp(stampId);
+            } catch (e) {
+              Alert.alert(
+                'Couldn’t delete this visit',
+                `Try again when you have signal.\n\n(${e instanceof Error ? e.message : String(e)})`,
+              );
+            } finally {
+              setDeletingId(null);
+            }
+          },
+        },
+      ],
+    );
+  };
 
   if (!reserve) {
     return (
@@ -48,41 +76,17 @@ export default function ReserveDetailScreen() {
               Visit this reserve and photograph the entrance sign to collect its stamp.
             </ThemedText>
           ) : (
-            visits.map((visit) => {
-              const photoUrl = photoUrlFor(visit);
-              return (
-              <ThemedView key={visit.id} type="backgroundElement" style={styles.visit}>
-                {photoUrl ? (
-                  <Image
-                    // cacheKey = storage path, so the photo stays cached even though
-                    // its signed URL changes every session
-                    source={{ uri: photoUrl, cacheKey: visit.photo_url }}
-                    style={styles.photo}
-                    contentFit="cover"
-                    transition={150}
-                    accessibilityLabel={`Photo from your visit to ${reserve.name}`}
-                  />
-                ) : (
-                  <ThemedView type="backgroundSelected" style={[styles.photo, styles.photoPlaceholder]}>
-                    <ThemedText type="small" themeColor="textSecondary">
-                      {visit.photo_url ? 'Photo unavailable' : 'No photo'}
-                    </ThemedText>
-                  </ThemedView>
-                )}
-                <View style={styles.visitBody}>
-                  <ThemedText type="smallBold">{formatVisitDate(visit.visited_at)}</ThemedText>
-                  <ThemedText
-                    type="small"
-                    themeColor={visit.write_up ? 'text' : 'textSecondary'}>
-                    {visit.write_up ?? 'No write-up.'}
-                  </ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary">
-                    {visit.is_public ? 'Public' : 'Private'}
-                  </ThemedText>
-                </View>
-              </ThemedView>
-              );
-            })
+            visits.map((visit) => (
+              <VisitCard
+                key={visit.id}
+                visit={visit}
+                photoUrl={photoUrlFor(visit)}
+                reserveName={reserve.name}
+                busy={deletingId === visit.id}
+                onEdit={() => router.push({ pathname: '/visit/[id]', params: { id: visit.id } })}
+                onDelete={() => confirmDelete(visit.id)}
+              />
+            ))
           )}
         </ScrollView>
         <View style={styles.footer}>
@@ -121,22 +125,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     lineHeight: 32,
-  },
-  visit: {
-    borderRadius: Spacing.three,
-    overflow: 'hidden',
-  },
-  photo: {
-    width: '100%',
-    aspectRatio: 4 / 3,
-  },
-  photoPlaceholder: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  visitBody: {
-    padding: Spacing.three,
-    gap: Spacing.half,
   },
   footer: {
     paddingHorizontal: Spacing.three,
