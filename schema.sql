@@ -18,6 +18,9 @@ create table reserves (
   lng float8
 );
 
+-- Names are unique so the seed (supabase/seed-reserves.sql) can add/update by name.
+create unique index reserves_name_key on reserves (name);
+
 -- ============================================================
 -- Stamps (one row per visit — repeat visits to the same reserve
 -- are allowed on purpose, no unique constraint on user+reserve)

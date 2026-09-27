@@ -1,0 +1,1547 @@
+{
+  "_about": "Reserve Passport seed list. Scope: government-run (national + provincial) reserves open to visitors; no private or municipal reserves, no marine-only areas. Province = province of the MAIN GATE for reserves spanning several. Edit this file, then run scripts/reserves/fetch-coordinates.mjs and scripts/reserves/build.mjs. 'check' = needs a human to confirm (status, name, or whether it belongs).",
+  "reserves": [
+    {
+      "name": "Addo Elephant National Park",
+      "org": "SANParks",
+      "province": "Eastern Cape",
+      "lat": -33.4461,
+      "lng": 25.7458,
+      "wikidata": "Q353318"
+    },
+    {
+      "name": "Agulhas National Park",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "lat": -34.74089,
+      "lng": 19.86641,
+      "wikidata": "Q398525"
+    },
+    {
+      "name": "Augrabies Falls National Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -28.59111,
+      "lng": 20.33833,
+      "wikidata": "Q760459"
+    },
+    {
+      "name": "Bontebok National Park",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "lat": -34.0667,
+      "lng": 20.45,
+      "wikidata": "Q892884"
+    },
+    {
+      "name": "Camdeboo National Park",
+      "org": "SANParks",
+      "province": "Eastern Cape",
+      "lat": -32.25,
+      "lng": 24.5,
+      "wikidata": "Q655377"
+    },
+    {
+      "name": "Garden Route National Park – Tsitsikamma",
+      "org": "SANParks",
+      "province": "Eastern Cape",
+      "check": "Garden Route NP split into its 3 sections (own gates, far apart). Keep split, or one stamp for the whole park?",
+      "wikidata_name": "Tsitsikamma National Park",
+      "lat": -34.02167,
+      "lng": 23.89556,
+      "wikidata": "Q428102"
+    },
+    {
+      "name": "Garden Route National Park – Knysna",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "check": "See Tsitsikamma note (section split).",
+      "wikidata_name": "Knysna National Lake Area",
+      "lat": -34.05,
+      "lng": 23.04167,
+      "wikidata": "Q1651751"
+    },
+    {
+      "name": "Garden Route National Park – Wilderness",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "check": "See Tsitsikamma note (section split).",
+      "wikidata_name": "Wilderness National Park",
+      "lat": -33.9899,
+      "lng": 22.6088,
+      "wikidata": "Q1652010"
+    },
+    {
+      "name": "Golden Gate Highlands National Park",
+      "org": "SANParks",
+      "province": "Free State",
+      "lat": -28.5244,
+      "lng": 28.6208,
+      "wikidata": "Q654851"
+    },
+    {
+      "name": "Groenkloof National Park",
+      "org": "SANParks",
+      "province": "Gauteng",
+      "check": "Small park at SANParks head office in Pretoria — include?",
+      "lat": -25.7934,
+      "lng": 28.2039,
+      "wikidata": "Q5610098",
+      "coord_locked": true
+    },
+    {
+      "name": "Karoo National Park",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "lat": -32.2622,
+      "lng": 22.3091,
+      "wikidata": "Q1734287"
+    },
+    {
+      "name": "Kgalagadi Transfrontier Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -25.76667,
+      "lng": 20.38333,
+      "wikidata": "Q859385"
+    },
+    {
+      "name": "Kruger National Park",
+      "org": "SANParks",
+      "province": "Mpumalanga",
+      "note": "Spans Limpopo + Mpumalanga; main gates (Paul Kruger, Malelane, etc.) in Mpumalanga",
+      "lat": -24.01139,
+      "lng": 31.48528,
+      "wikidata": "Q24451"
+    },
+    {
+      "name": "Mapungubwe National Park",
+      "org": "SANParks",
+      "province": "Limpopo",
+      "lat": -22.22229,
+      "lng": 29.31547,
+      "wikidata": "Q1892156"
+    },
+    {
+      "name": "Marakele National Park",
+      "org": "SANParks",
+      "province": "Limpopo",
+      "lat": -24.3833,
+      "lng": 27.6167,
+      "wikidata": "Q1892280"
+    },
+    {
+      "name": "Meerkat National Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -30.667,
+      "lng": 21.445,
+      "wikidata": "Q112108387"
+    },
+    {
+      "name": "Mokala National Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -29.1667,
+      "lng": 24.35,
+      "wikidata": "Q1521388"
+    },
+    {
+      "name": "Mountain Zebra National Park",
+      "org": "SANParks",
+      "province": "Eastern Cape",
+      "lat": -32.25318,
+      "lng": 25.45297,
+      "wikidata": "Q206508"
+    },
+    {
+      "name": "Namaqua National Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -30.0433,
+      "lng": 17.5861,
+      "wikidata": "Q499499"
+    },
+    {
+      "name": "Table Mountain National Park",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "check": "One stamp for the whole park, or separate stamps for its gated sections (Cape Point, Boulders Beach, Silvermine…)?",
+      "lat": -33.9667,
+      "lng": 18.425,
+      "wikidata": "Q1818952"
+    },
+    {
+      "name": "Tankwa Karoo National Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -32.25,
+      "lng": 19.75,
+      "wikidata": "Q1476888"
+    },
+    {
+      "name": "West Coast National Park",
+      "org": "SANParks",
+      "province": "Western Cape",
+      "lat": -33.12083,
+      "lng": 18.06667,
+      "wikidata": "Q1760813"
+    },
+    {
+      "name": "ǀAi-ǀAis/Richtersveld Transfrontier Park",
+      "org": "SANParks",
+      "province": "Northern Cape",
+      "lat": -28.0539,
+      "lng": 17.0347,
+      "wikidata": "Q394755",
+      "coord_locked": true
+    },
+    {
+      "name": "Anysberg Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.5167,
+      "lng": 20.6167,
+      "wikidata": "Q613978"
+    },
+    {
+      "name": "Assegaaibosch Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.9667,
+      "lng": 18.925,
+      "wikidata": "Q4808626"
+    },
+    {
+      "name": "Boosmansbos Wilderness Area",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.9167,
+      "lng": 20.8667,
+      "wikidata": "Q4943787"
+    },
+    {
+      "name": "Cederberg Wilderness Area",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -32.33333,
+      "lng": 19.11667,
+      "wikidata": "Q119079170"
+    },
+    {
+      "name": "De Hoop Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.4342,
+      "lng": 20.5478,
+      "wikidata": "Q1180030"
+    },
+    {
+      "name": "De Mond Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.71111,
+      "lng": 20.10639,
+      "wikidata": "Q1180153"
+    },
+    {
+      "name": "Gamkaberg Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.68889,
+      "lng": 21.6,
+      "wikidata": "Q1493132"
+    },
+    {
+      "name": "Geelkrans Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.36556,
+      "lng": 21.48889,
+      "wikidata": "Q31503650",
+      "coord_note": "location of Geelkrans cliff"
+    },
+    {
+      "name": "Goukamma Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.05333,
+      "lng": 22.89361,
+      "wikidata": "Q31917725"
+    },
+    {
+      "name": "Groot Winterhoek Wilderness Area",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.19675,
+      "lng": 19.09046,
+      "wikidata": "Q31917971",
+      "coord_locked": true
+    },
+    {
+      "name": "Grootvadersbosch Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.94,
+      "lng": 20.8,
+      "wikidata": "Q1547391",
+      "coord_locked": true
+    },
+    {
+      "name": "Hottentots Holland Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.0046,
+      "lng": 19.0283,
+      "wikidata": "Q123291269"
+    },
+    {
+      "name": "Jonkershoek Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.96944,
+      "lng": 18.93611,
+      "wikidata": "Q6275611"
+    },
+    {
+      "name": "Keurbooms River Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.02694,
+      "lng": 23.395,
+      "wikidata": "Q6395627",
+      "coord_note": "location of Keurbooms River"
+    },
+    {
+      "name": "Kogelberg Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.2019,
+      "lng": 18.8513,
+      "wikidata": "Q6425781"
+    },
+    {
+      "name": "Lambert's Bay Bird Island Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "wikidata_name": "Bird Island Nature Reserve"
+    },
+    {
+      "name": "Limietberg Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape"
+    },
+    {
+      "name": "Marloth Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.9667,
+      "lng": 20.4167,
+      "wikidata": "Q1784896"
+    },
+    {
+      "name": "Matjiesrivier Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -32.50014,
+      "lng": 19.33611,
+      "wikidata": "Q3457351"
+    },
+    {
+      "name": "Outeniqua Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape"
+    },
+    {
+      "name": "Robberg Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.10472,
+      "lng": 23.39528,
+      "wikidata": "Q19623594",
+      "coord_note": "location of Robberg peninsula"
+    },
+    {
+      "name": "Rocherpan Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -32.58333,
+      "lng": 18.28333,
+      "wikidata": "Q1652873"
+    },
+    {
+      "name": "Stony Point Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.3725,
+      "lng": 18.89333,
+      "wikidata": "Q130245371"
+    },
+    {
+      "name": "Swartberg Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "note": "Includes Gamkaskloof (Die Hel)",
+      "lat": -33.3526,
+      "lng": 22.0053,
+      "wikidata": "Q3457464"
+    },
+    {
+      "name": "Vrolijkheid Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -33.91778,
+      "lng": 19.8775,
+      "wikidata": "Q126909639"
+    },
+    {
+      "name": "Walker Bay Nature Reserve",
+      "org": "CapeNature",
+      "province": "Western Cape",
+      "lat": -34.4833,
+      "lng": 19.3667,
+      "wikidata": "Q7962220"
+    },
+    {
+      "name": "Hluhluwe-iMfolozi Park",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "wikidata_name": "Hluhluwe–Imfolozi Park",
+      "lat": -28.24861,
+      "lng": 31.98926,
+      "wikidata": "Q129867"
+    },
+    {
+      "name": "Ithala Game Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -27.5159,
+      "lng": 31.3313,
+      "wikidata": "Q1381580"
+    },
+    {
+      "name": "Tembe Elephant Park",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -27.0486,
+      "lng": 32.4222,
+      "wikidata": "Q1380402"
+    },
+    {
+      "name": "Ndumo Game Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -26.9119,
+      "lng": 32.2633,
+      "wikidata": "Q1380408"
+    },
+    {
+      "name": "Weenen Game Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -28.835,
+      "lng": 29.99648,
+      "wikidata": "Q45900741"
+    },
+    {
+      "name": "Ophathe Game Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Phongolo Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Pongolapoort area — confirm name and status",
+      "lat": -27.34169,
+      "lng": 31.90611,
+      "wikidata": "Q7187261"
+    },
+    {
+      "name": "Royal Natal National Park",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "check": "Drakensberg split into its separately gated areas (Royal Natal, Cathedral Peak, Giant's Castle…). Keep split, or one stamp for the whole park?",
+      "lat": -28.689,
+      "lng": 28.945,
+      "wikidata": "Q1381505"
+    },
+    {
+      "name": "Rugged Glen Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "check": "Small; next to Royal Natal — separate stamp?",
+      "lat": -28.67278,
+      "lng": 28.99111,
+      "wikidata": "Q32010570"
+    },
+    {
+      "name": "Cathedral Peak",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park (Didima)",
+      "lat": -28.95028,
+      "lng": 29.20139,
+      "wikidata": "Q1050879"
+    },
+    {
+      "name": "Monk's Cowl",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "lat": -29.07944,
+      "lng": 29.34306,
+      "wikidata": "Q31469543"
+    },
+    {
+      "name": "Injisuthi",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park"
+    },
+    {
+      "name": "Giant's Castle",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "lat": -29.34608,
+      "lng": 29.48364,
+      "wikidata": "Q3432135"
+    },
+    {
+      "name": "Highmoor",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "wikidata_name": "Highmoor Nature Reserve"
+    },
+    {
+      "name": "Kamberg",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "wikidata_name": "Kamberg Nature Reserve",
+      "lat": -29.39278,
+      "lng": 29.67389,
+      "wikidata": "Q31929468"
+    },
+    {
+      "name": "Lotheni",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "wikidata_name": "Lotheni Nature Reserve",
+      "lat": -29.45,
+      "lng": 29.525,
+      "wikidata": "Q141280474"
+    },
+    {
+      "name": "Vergelegen",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Vergelegen Nature Reserve",
+      "lat": -29.61667,
+      "lng": 29.58333,
+      "wikidata": "Q32039419"
+    },
+    {
+      "name": "Cobham",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "wikidata_name": "Cobham Nature Reserve",
+      "lat": -29.66667,
+      "lng": 29.33333,
+      "wikidata": "Q31907955",
+      "coord_note": "location of Cobham State Forest"
+    },
+    {
+      "name": "Garden Castle",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "note": "Part of uKhahlamba-Drakensberg Park",
+      "wikidata_name": "Garden Castle Nature Reserve"
+    },
+    {
+      "name": "Oribi Gorge Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -30.7197,
+      "lng": 30.27,
+      "wikidata": "Q1380385"
+    },
+    {
+      "name": "Umtamvuna Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -31.01,
+      "lng": 30.16,
+      "wikidata": "Q7881814"
+    },
+    {
+      "name": "Krantzkloof Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -29.7643,
+      "lng": 30.8509,
+      "wikidata": "Q13432936"
+    },
+    {
+      "name": "Kenneth Stainbank Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -29.90718,
+      "lng": 30.93403,
+      "wikidata": "Q28223130"
+    },
+    {
+      "name": "Beachwood Mangroves Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "wikidata_name": "Beachwood Mangrove Nature Reserve",
+      "lat": -29.80815,
+      "lng": 31.00761,
+      "wikidata": "Q24234210"
+    },
+    {
+      "name": "Vernon Crookes Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -30.275,
+      "lng": 30.59167,
+      "wikidata": "Q106865402"
+    },
+    {
+      "name": "Mpenjati Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -30.9725,
+      "lng": 30.2842,
+      "wikidata": "Q18377808"
+    },
+    {
+      "name": "Umlalazi Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -29.0021,
+      "lng": 31.722,
+      "wikidata": "Q7881603"
+    },
+    {
+      "name": "Amatikulu Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -29.10389,
+      "lng": 31.5925,
+      "wikidata": "Q106865505"
+    },
+    {
+      "name": "Harold Johnson Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -29.21111,
+      "lng": 31.42389,
+      "wikidata": "Q20981589"
+    },
+    {
+      "name": "Midmar Dam Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "wikidata_name": "Midmar Nature Reserve",
+      "lat": -29.50083,
+      "lng": 30.20139,
+      "wikidata": "Q1932015"
+    },
+    {
+      "name": "Albert Falls Dam Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm current name/status",
+      "lat": -29.45833,
+      "lng": 30.37361,
+      "wikidata": "Q2637876",
+      "coord_locked": true
+    },
+    {
+      "name": "Spioenkop Dam Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -28.6667,
+      "lng": 29.5167,
+      "wikidata": "Q7577687"
+    },
+    {
+      "name": "Wagendrift Dam Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm open to visitors",
+      "lat": -29.04167,
+      "lng": 29.85417,
+      "wikidata": "Q137785200"
+    },
+    {
+      "name": "Chelmsford Dam Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Also called Ntshingwayo Dam — confirm current name",
+      "wikidata_name": "Chelmsford Nature Reserve",
+      "lat": -27.9617,
+      "lng": 29.9053,
+      "wikidata": "Q5089965"
+    },
+    {
+      "name": "Ntsikeni Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "lat": -30.13333,
+      "lng": 29.46667,
+      "wikidata": "Q61361520"
+    },
+    {
+      "name": "Coleford Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm open to visitors",
+      "lat": -29.95444,
+      "lng": 29.46278,
+      "wikidata": "Q31908189"
+    },
+    {
+      "name": "Hazelmere Dam Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm open to visitors",
+      "lat": -29.5982,
+      "lng": 31.04269,
+      "wikidata": "Q5688096",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Queen Elizabeth Park Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Ezemvelo head office grounds — include?"
+    },
+    {
+      "name": "Dlinza Forest Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "wikidata_name": "Dlinza Forest"
+    },
+    {
+      "name": "Ongoye Forest Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Ongoye Forest",
+      "lat": -28.84667,
+      "lng": 31.73222,
+      "wikidata": "Q15264108"
+    },
+    {
+      "name": "Nkandla Forest Nature Reserve",
+      "org": "Ezemvelo KZN Wildlife",
+      "province": "KwaZulu-Natal",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Nkandla Forest",
+      "lat": -28.73083,
+      "lng": 31.11944,
+      "wikidata": "Q31971043"
+    },
+    {
+      "name": "iSimangaliso Wetland Park – Eastern Shores & Cape Vidal",
+      "org": "iSimangaliso Wetland Park Authority",
+      "province": "KwaZulu-Natal",
+      "check": "iSimangaliso split into its separately gated sections. Keep split, or one stamp for the whole park?",
+      "wikidata_name": "Cape Vidal",
+      "lat": -28.12676,
+      "lng": 32.55906,
+      "wikidata": "Q31889968",
+      "coord_note": "location of Cape Vidal"
+    },
+    {
+      "name": "iSimangaliso Wetland Park – Western Shores",
+      "org": "iSimangaliso Wetland Park Authority",
+      "province": "KwaZulu-Natal",
+      "check": "See Eastern Shores note (section split).",
+      "wikidata_name": "False Bay Park",
+      "lat": -27.9758,
+      "lng": 32.3622,
+      "wikidata": "Q5432627"
+    },
+    {
+      "name": "iSimangaliso Wetland Park – uMkhuze",
+      "org": "iSimangaliso Wetland Park Authority",
+      "province": "KwaZulu-Natal",
+      "check": "See Eastern Shores note (section split).",
+      "wikidata_name": "uMkhuze Game Reserve",
+      "lat": -27.65,
+      "lng": 32.25,
+      "wikidata": "Q6885492"
+    },
+    {
+      "name": "iSimangaliso Wetland Park – Sodwana Bay",
+      "org": "iSimangaliso Wetland Park Authority",
+      "province": "KwaZulu-Natal",
+      "check": "See Eastern Shores note (section split).",
+      "wikidata_name": "Sodwana Bay National Park",
+      "lat": -27.5383,
+      "lng": 32.6651,
+      "wikidata": "Q2533154"
+    },
+    {
+      "name": "iSimangaliso Wetland Park – Kosi Bay",
+      "org": "iSimangaliso Wetland Park Authority",
+      "province": "KwaZulu-Natal",
+      "check": "See Eastern Shores note (section split).",
+      "wikidata_name": "Kosi Bay Nature Reserve",
+      "lat": -27,
+      "lng": 32.8333,
+      "wikidata": "Q3633055"
+    },
+    {
+      "name": "Baviaanskloof Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "wikidata_name": "Baviaanskloof",
+      "lat": -33.5,
+      "lng": 24.1333,
+      "wikidata": "Q2562112",
+      "coord_locked": true
+    },
+    {
+      "name": "Great Fish River Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -32.9628,
+      "lng": 26.8422,
+      "wikidata": "Q5599198"
+    },
+    {
+      "name": "Dwesa-Cwebe Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "wikidata_name": "Dwesa Nature Reserve",
+      "lat": -32.26,
+      "lng": 28.895,
+      "wikidata": "Q5318087"
+    },
+    {
+      "name": "Hluleka Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -31.82,
+      "lng": 29.3,
+      "wikidata": "Q5873583"
+    },
+    {
+      "name": "Mkhambathi Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -31.30611,
+      "lng": 29.98472,
+      "wikidata": "Q6885477"
+    },
+    {
+      "name": "Silaka Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -31.65306,
+      "lng": 29.50806,
+      "wikidata": "Q3457364"
+    },
+    {
+      "name": "Tsolwana Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -32.1706,
+      "lng": 26.5003,
+      "wikidata": "Q7849845"
+    },
+    {
+      "name": "Oviston Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -30.73175,
+      "lng": 25.78489,
+      "wikidata": "Q7114183"
+    },
+    {
+      "name": "Commando Drift Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -32.0539,
+      "lng": 26.0244,
+      "wikidata": "Q5152243"
+    },
+    {
+      "name": "Mpofu Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -32.621,
+      "lng": 26.591,
+      "wikidata": "Q10359740"
+    },
+    {
+      "name": "Fort Fordyce Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -32.60376,
+      "lng": 26.37413,
+      "wikidata": "Q5471151"
+    },
+    {
+      "name": "Waters Meeting Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -33.56493,
+      "lng": 26.85711,
+      "wikidata": "Q32041559"
+    },
+    {
+      "name": "Thomas Baines Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "lat": -33.391,
+      "lng": 26.487,
+      "wikidata": "Q7787316"
+    },
+    {
+      "name": "Great Kei Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "check": "Confirm provincial + open to visitors"
+    },
+    {
+      "name": "East London Coast Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "check": "Made up of ~12 small coastal reserves — one stamp, or leave out?",
+      "lat": -32.9786,
+      "lng": 27.9578,
+      "wikidata": "Q5328859"
+    },
+    {
+      "name": "Umtiza Nature Reserve",
+      "org": "Eastern Cape Parks & Tourism",
+      "province": "Eastern Cape",
+      "check": "Confirm provincial + open to visitors",
+      "lat": -33.01694,
+      "lng": 27.80778,
+      "wikidata": "Q111994013"
+    },
+    {
+      "name": "Blyde River Canyon Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "lat": -24.4914,
+      "lng": 30.7597,
+      "wikidata": "Q1305810"
+    },
+    {
+      "name": "Loskop Dam Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "lat": -25.42361,
+      "lng": 29.29833,
+      "wikidata": "Q15242910"
+    },
+    {
+      "name": "Songimvelo Game Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "lat": -25.9292,
+      "lng": 31.0542,
+      "wikidata": "Q7561271"
+    },
+    {
+      "name": "Verloren Vallei Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "wikidata_name": "Verloren Valei Nature Reserve",
+      "lat": -25.3,
+      "lng": 30.115,
+      "wikidata": "Q16902624"
+    },
+    {
+      "name": "Barberton Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm current name/status"
+    },
+    {
+      "name": "Mahushe Shongwe Game Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Mahushe Shongwe Reserve",
+      "lat": -25.70658,
+      "lng": 31.70676,
+      "wikidata": "Q16890466",
+      "coord_locked": true
+    },
+    {
+      "name": "Mthethomusha Game Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors",
+      "lat": -25.43333,
+      "lng": 31.28333,
+      "wikidata": "Q6930447"
+    },
+    {
+      "name": "Mdala Game Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Mabusa Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Mkhombo Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors",
+      "lat": -25.114,
+      "lng": 28.825,
+      "wikidata": "Q6885486",
+      "coord_locked": true
+    },
+    {
+      "name": "SS Skosana Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Nooitgedacht Dam Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors",
+      "lat": -25.9767,
+      "lng": 30.0607,
+      "wikidata": "Q7049688",
+      "coord_locked": true
+    },
+    {
+      "name": "Ohrigstad Dam Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors",
+      "lat": -24.91694,
+      "lng": 30.61694,
+      "wikidata": "Q7081154",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Manyeleti Game Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Provincial but visited via private lodges — include?"
+    },
+    {
+      "name": "Andover Nature Reserve",
+      "org": "Mpumalanga Tourism & Parks",
+      "province": "Mpumalanga",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Pilanesberg National Park",
+      "org": "North West Parks",
+      "province": "North West",
+      "note": "Named 'National Park' but run by North West Parks",
+      "lat": -25.2611,
+      "lng": 27.1008,
+      "wikidata": "Q1424093"
+    },
+    {
+      "name": "Madikwe Game Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -24.8167,
+      "lng": 26.2167,
+      "wikidata": "Q1380373"
+    },
+    {
+      "name": "Borakalalo National Park",
+      "org": "North West Parks",
+      "province": "North West",
+      "wikidata_name": "Borakalalo Game Reserve",
+      "lat": -25.95,
+      "lng": 27.85,
+      "wikidata": "Q4944282"
+    },
+    {
+      "name": "Kgaswane Mountain Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -25.719,
+      "lng": 27.189,
+      "wikidata": "Q1740465",
+      "coord_locked": true
+    },
+    {
+      "name": "Mafikeng Game Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -25.8717,
+      "lng": 25.7247,
+      "wikidata": "Q17070829"
+    },
+    {
+      "name": "Botsalano Game Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -25.5638,
+      "lng": 25.7113,
+      "wikidata": "Q17021019"
+    },
+    {
+      "name": "Molopo Game Reserve",
+      "org": "North West Parks",
+      "province": "North West"
+    },
+    {
+      "name": "Molemane Eye Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -25.8168,
+      "lng": 26.0712,
+      "wikidata": "Q117317466"
+    },
+    {
+      "name": "Vaalkop Dam Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -25.31028,
+      "lng": 27.47583,
+      "wikidata": "Q7907816",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Bloemhof Dam Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -27.66521,
+      "lng": 25.61902,
+      "wikidata": "Q1767203",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Barberspan Bird Sanctuary",
+      "org": "North West Parks",
+      "province": "North West",
+      "lat": -26.58194,
+      "lng": 25.59167,
+      "wikidata": "Q31878080",
+      "coord_note": "location of the pan"
+    },
+    {
+      "name": "Boskop Dam Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "check": "Confirm provincial + open to visitors",
+      "lat": -26.56183,
+      "lng": 27.11144,
+      "wikidata": "Q1009341",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "SA Lombard Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "S.A. Lombard Nature Reserve"
+    },
+    {
+      "name": "Wolwespruit Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Wolwespruit Dam Reserve"
+    },
+    {
+      "name": "Marico Bosveld Nature Reserve",
+      "org": "North West Parks",
+      "province": "North West",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Marico-Bosveld Nature Reserve",
+      "lat": -25.51667,
+      "lng": 26.41667,
+      "wikidata": "Q31950263",
+      "coord_locked": true
+    },
+    {
+      "name": "Nylsvley Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "lat": -24.6548,
+      "lng": 28.691,
+      "wikidata": "Q1381439"
+    },
+    {
+      "name": "Nwanedi Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "wikidata_name": "Nwanedi Provincial Park",
+      "lat": -22.6319,
+      "lng": 30.4017,
+      "wikidata": "Q7070732"
+    },
+    {
+      "name": "Lekgalameetse Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "wikidata_name": "Lekgalameetse Provincial Park"
+    },
+    {
+      "name": "Letaba Ranch Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Letaba Ranch Provincial Park",
+      "lat": -22.73333,
+      "lng": 31.1,
+      "wikidata": "Q6533169"
+    },
+    {
+      "name": "Manombe Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Mano'mbe Provincial Park",
+      "lat": -23.23102,
+      "lng": 30.11672,
+      "wikidata": "Q130342004"
+    },
+    {
+      "name": "Mokolo Dam Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "wikidata_name": "Mokolo Dam Provincial Park",
+      "lat": -24,
+      "lng": 27.7667,
+      "wikidata": "Q6895382"
+    },
+    {
+      "name": "Tzaneen Dam Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Tzaneen Dam Provincial Park",
+      "lat": -23.7936,
+      "lng": 30.1633,
+      "wikidata": "Q2276243",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Doorndraai Dam Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -24.32528,
+      "lng": 28.75889,
+      "wikidata": "Q5297238"
+    },
+    {
+      "name": "Atherstone Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -24.57485,
+      "lng": 26.7852,
+      "wikidata": "Q4813578"
+    },
+    {
+      "name": "Hans Merensky Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -23.70139,
+      "lng": 30.66667,
+      "wikidata": "Q31919250",
+      "coord_locked": true
+    },
+    {
+      "name": "Blouberg Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -23.0167,
+      "lng": 29.1,
+      "wikidata": "Q4928474"
+    },
+    {
+      "name": "Happy Rest Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Langjan Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -22.82944,
+      "lng": 29.22694,
+      "wikidata": "Q31942079",
+      "coord_locked": true
+    },
+    {
+      "name": "Schuinsdraai Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "D'Nyala Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -23.71809,
+      "lng": 27.80798,
+      "wikidata": "Q5203206"
+    },
+    {
+      "name": "Percy Fyfe Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -24.02611,
+      "lng": 29.16083,
+      "wikidata": "Q31985533"
+    },
+    {
+      "name": "Modjadji Nature Reserve",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors (cycad reserve)",
+      "lat": -23.6283,
+      "lng": 30.3633,
+      "wikidata": "Q3936787"
+    },
+    {
+      "name": "Wolkberg Wilderness Area",
+      "org": "Limpopo Provincial Parks",
+      "province": "Limpopo",
+      "check": "Confirm open to visitors",
+      "lat": -24.05,
+      "lng": 30.1,
+      "wikidata": "Q8030296"
+    },
+    {
+      "name": "Willem Pretorius Game Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "wikidata_name": "Willem Pretorius Nature Reserve",
+      "lat": -28.306,
+      "lng": 27.236,
+      "wikidata": "Q1380353"
+    },
+    {
+      "name": "Soetdoring Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State"
+    },
+    {
+      "name": "Sandveld Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "lat": -27.7333,
+      "lng": 25.6333,
+      "wikidata": "Q7417018"
+    },
+    {
+      "name": "Tussen-die-Riviere Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "lat": -30.468,
+      "lng": 26.118,
+      "wikidata": "Q7731655",
+      "coord_locked": true
+    },
+    {
+      "name": "Gariep Dam Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "wikidata_name": "Gariep Nature Reserve",
+      "lat": -30.62278,
+      "lng": 25.50639,
+      "wikidata": "Q1494266",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Sterkfontein Dam Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "lat": -28.4,
+      "lng": 29.0333,
+      "wikidata": "Q7611341"
+    },
+    {
+      "name": "Kalkfontein Dam Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Kalkfontein Nature Reserve",
+      "lat": -29.49583,
+      "lng": 25.22222,
+      "wikidata": "Q6353387",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Erfenis Dam Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors",
+      "lat": -28.51083,
+      "lng": 26.77722,
+      "wikidata": "Q5385757",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Koppies Dam Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors",
+      "lat": -27.245,
+      "lng": 27.716,
+      "wikidata": "Q6431185"
+    },
+    {
+      "name": "Maria Moroka Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors"
+    },
+    {
+      "name": "Rustfontein Dam Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors",
+      "lat": -29.27083,
+      "lng": 26.61694,
+      "wikidata": "Q7382478",
+      "coord_note": "location of the dam"
+    },
+    {
+      "name": "Seekoeivlei Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors",
+      "lat": -27.62667,
+      "lng": 29.58278,
+      "wikidata": "Q7445803"
+    },
+    {
+      "name": "Caledon Nature Reserve",
+      "org": "Free State Provincial Parks",
+      "province": "Free State",
+      "check": "Confirm open to visitors",
+      "lat": -29.9147,
+      "lng": 26.8528,
+      "wikidata": "Q1026564"
+    },
+    {
+      "name": "Goegap Nature Reserve",
+      "org": "Northern Cape Provincial Parks",
+      "province": "Northern Cape",
+      "lat": -29.68333,
+      "lng": 18,
+      "wikidata": "Q1534032",
+      "coord_locked": true
+    },
+    {
+      "name": "Witsand Nature Reserve",
+      "org": "Northern Cape Provincial Parks",
+      "province": "Northern Cape",
+      "lat": -28.5394,
+      "lng": 22.4889,
+      "wikidata": "Q31400835",
+      "coord_note": "location of Witsand hill"
+    },
+    {
+      "name": "Rolfontein Nature Reserve",
+      "org": "Northern Cape Provincial Parks",
+      "province": "Northern Cape"
+    },
+    {
+      "name": "Oorlogskloof Nature Reserve",
+      "org": "Northern Cape Provincial Parks",
+      "province": "Northern Cape",
+      "check": "Confirm open to visitors",
+      "lat": -31.45,
+      "lng": 19.15,
+      "wikidata": "Q13035682"
+    },
+    {
+      "name": "Doornkloof Nature Reserve",
+      "org": "Northern Cape Provincial Parks",
+      "province": "Northern Cape",
+      "check": "Confirm open to visitors",
+      "lat": -30.31344,
+      "lng": 24.98334,
+      "wikidata": "Q105359156",
+      "coord_locked": true
+    },
+    {
+      "name": "Suikerbosrand Nature Reserve",
+      "org": "Gauteng Provincial Parks",
+      "province": "Gauteng",
+      "lat": -26.5,
+      "lng": 28.25,
+      "wikidata": "Q1463687"
+    },
+    {
+      "name": "Marievale Bird Sanctuary",
+      "org": "Gauteng Provincial Parks",
+      "province": "Gauteng",
+      "lat": -26.35972,
+      "lng": 28.50889,
+      "wikidata": "Q15247553"
+    },
+    {
+      "name": "Abe Bailey Nature Reserve",
+      "org": "Gauteng Provincial Parks",
+      "province": "Gauteng",
+      "check": "Confirm open to visitors",
+      "lat": -26.3044,
+      "lng": 27.3367,
+      "wikidata": "Q4666370"
+    },
+    {
+      "name": "Roodeplaat Dam Nature Reserve",
+      "org": "Gauteng Provincial Parks",
+      "province": "Gauteng",
+      "check": "Confirm open to visitors",
+      "wikidata_name": "Roodeplaat Nature Reserve",
+      "lat": -25.6408,
+      "lng": 28.3559,
+      "wikidata": "Q7366122"
+    },
+    {
+      "name": "Alice Glockner Nature Reserve",
+      "org": "Gauteng Provincial Parks",
+      "province": "Gauteng",
+      "check": "Confirm open to visitors",
+      "lat": -26.567,
+      "lng": 28.369,
+      "wikidata": "Q4725882"
+    },
+    {
+      "name": "Leeuwfontein Collaborative Nature Reserve",
+      "org": "Gauteng Provincial Parks",
+      "province": "Gauteng",
+      "check": "Confirm open to visitors"
+    }
+  ]
+}
