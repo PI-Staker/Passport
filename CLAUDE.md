@@ -77,6 +77,15 @@ This isn't a bolt-on — it shaped the schema. Specifics below, but the summary:
 5. **Polish** — offline queueing (photo taken with no signal, uploads when back in
    range), challenges UI, friend invite flow, map view.
 
+## Working with the developer
+- Experienced in Unity and Salesforce, **new to this stack** (Node/npm, React Native,
+  Expo, Supabase). Always give numbered, click-by-click steps for anything they do by
+  hand, say what success looks like, and explain new terms the first time. Unity /
+  Salesforce analogies are welcome (e.g. RLS ≈ sharing rules).
+- Windows + PowerShell: PowerShell blocks `npm.ps1`, so give `npm.cmd` / `npx.cmd`.
+- Run the app: `npm.cmd start` in the repo folder (defaults to Expo Go), then scan the
+  QR code **from inside the Expo Go app** (Android camera does a web search instead).
+
 ## Working with Claude Code
 - Feature-by-feature as above, not "build the whole app" in one shot — each as its
   own reviewable session.
