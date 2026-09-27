@@ -3,7 +3,7 @@
 // compression, offline handling — built and tested on its own first.
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { FlatList, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { Alert, FlatList, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { PrimaryButton } from '@/components/PrimaryButton';
@@ -21,6 +21,7 @@ export default function CaptureScreen() {
   const [reserveId, setReserveId] = useState(params.reserveId);
   const [photoTaken, setPhotoTaken] = useState(false);
   const [writeUp, setWriteUp] = useState('');
+  const [saving, setSaving] = useState(false);
 
   const reserve = reserveId ? getReserve(reserveId) : undefined;
 
@@ -57,9 +58,15 @@ export default function CaptureScreen() {
     );
   }
 
-  const save = () => {
-    addStamp({ reserveId: reserve.id, writeUp: writeUp.trim() || null });
-    router.back();
+  const save = async () => {
+    setSaving(true);
+    try {
+      await addStamp({ reserveId: reserve.id, writeUp: writeUp.trim() || null });
+      router.back();
+    } catch (e) {
+      setSaving(false);
+      Alert.alert('Couldn’t save your stamp', e instanceof Error ? e.message : String(e));
+    }
   };
 
   return (
@@ -101,7 +108,11 @@ export default function CaptureScreen() {
           />
         </View>
         <View style={styles.footer}>
-          <PrimaryButton label="Get the stamp" onPress={save} disabled={!photoTaken} />
+          <PrimaryButton
+            label={saving ? 'Saving…' : 'Get the stamp'}
+            onPress={save}
+            disabled={!photoTaken || saving}
+          />
         </View>
       </SafeAreaView>
     </ThemedView>

@@ -123,20 +123,21 @@ repo/
 │   ├── lib/
 │   │   ├── passport-store.tsx # usePassport() — all screens read/write through this
 │   │   ├── types.ts          # row types mirroring schema.sql (snake_case)
-│   │   ├── dummy-data.ts     # Step 1 placeholder data
-│   │   ├── supabase.ts       # client init (Step 2)
-│   │   └── auth.ts           # anonymous sign-in + email upgrade (Step 2)
+│   │   ├── supabase.ts       # client init (session persisted via expo-sqlite localStorage)
+│   │   └── auth.ts           # anonymous sign-in (+ email upgrade, later)
 │   └── components/
 │       ├── StampCard.tsx
 │       └── CameraCapture.tsx # Step 3
 ├── data/
 │   └── reserves.json         # seed data: SANParks/CapeNature list
 ├── schema.sql                # full DB schema + RLS, source of truth
+├── supabase/
+│   └── seed-dev-reserves.sql # 15 placeholder reserves for development
 └── assets/
 ```
 
 ## Environment
 - Test device: **Android** phone via Expo Go.
 - Supabase keys go in `.env.local` (git-ignored) as `EXPO_PUBLIC_SUPABASE_URL` /
-  `EXPO_PUBLIC_SUPABASE_ANON_KEY`. Only ever the anon key — never service_role.
+  `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Only ever the publishable (anon) key — never service_role.
 - Expo-specific working rules (use `npx expo install`, check versioned docs): @AGENTS.md
