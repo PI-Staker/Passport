@@ -7,6 +7,8 @@ import '@/global.css';
 
 import { Platform } from 'react-native';
 
+// Deliberately plain placeholder palette — the real visual design comes later.
+// Keep every colour the app uses in here so a redesign is mostly this file.
 export const Colors = {
   light: {
     text: '#000000',
@@ -14,6 +16,10 @@ export const Colors = {
     backgroundElement: '#F0F0F3',
     backgroundSelected: '#E0E1E6',
     textSecondary: '#60646C',
+    accent: '#2F6B3A',       // buttons, progress bar
+    onAccent: '#ffffff',     // text on accent
+    stampInk: '#2F6B3A',     // a filled stamp
+    slotOutline: '#B9BCC4',  // an empty, not-yet-stamped slot
   },
   dark: {
     text: '#ffffff',
@@ -21,6 +27,10 @@ export const Colors = {
     backgroundElement: '#212225',
     backgroundSelected: '#2E3135',
     textSecondary: '#B0B4BA',
+    accent: '#7CC08A',
+    onAccent: '#0B1A0E',
+    stampInk: '#7CC08A',
+    slotOutline: '#4A4E55',
   },
 } as const;
 

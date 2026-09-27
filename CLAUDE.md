@@ -91,24 +91,35 @@ This isn't a bolt-on — it shaped the schema. Specifics below, but the summary:
 - None blocking the build — folder structure and schema below are ready to start
   from. Revisit UI/UX details (map view, badge design for completed challenges) once
   the core loop (stamp a reserve, see it in your passport) is working end to end.
+- **Visual metaphor:** an old-school coffee loyalty card — mobile-first grid, empty
+  slots waiting to be stamped. Full visual design comes later (possibly via Claude
+  Design), so keep styling in `src/constants/theme.ts` and small components.
+- **Possible future feature: road trips.** May eventually need a landing/home screen
+  choosing between Passport and Road trips. Not built yet — `/` just redirects to
+  `/passport`, so a landing page can replace that redirect later without moving
+  any routes. Requirements to be fleshed out iteratively.
 
 ## Folder structure
 Expo SDK 57 template: app code lives under `src/` (the `@/` import alias points there).
+No tab bar yet (one main screen) — `passport.tsx` moves into a `(tabs)/` group when
+the map or road trips arrive; groups don't change route URLs, so links stay valid.
 ```
 repo/
 ├── src/
 │   ├── app/                  # expo-router screens
-│   │   ├── (tabs)/
-│   │   │   ├── passport.tsx  # grid of reserves, stamped/unstamped
-│   │   │   └── map.tsx       # optional, later
+│   │   ├── index.tsx         # redirects to /passport (future landing page)
+│   │   ├── passport.tsx      # grid of reserves, stamped/unstamped
 │   │   ├── reserve/[id].tsx  # reserve detail + write-up
 │   │   └── capture.tsx       # camera flow
 │   ├── lib/
-│   │   ├── supabase.ts       # client init
-│   │   └── auth.ts           # anonymous sign-in + email upgrade
+│   │   ├── passport-store.tsx # usePassport() — all screens read/write through this
+│   │   ├── types.ts          # row types mirroring schema.sql (snake_case)
+│   │   ├── dummy-data.ts     # Step 1 placeholder data
+│   │   ├── supabase.ts       # client init (Step 2)
+│   │   └── auth.ts           # anonymous sign-in + email upgrade (Step 2)
 │   └── components/
 │       ├── StampCard.tsx
-│       └── CameraCapture.tsx
+│       └── CameraCapture.tsx # Step 3
 ├── data/
 │   └── reserves.json         # seed data: SANParks/CapeNature list
 ├── schema.sql                # full DB schema + RLS, source of truth
